@@ -1,4 +1,4 @@
-const store = {categories: [], tags: [], thoughts: [], comments: [], users: []}
+const store = {categories: [], tags: [], thoughts: [], comments: [], users: [], sessions: [], current_user: null}
 
 
 $(() => {

@@ -1,23 +1,526 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <script
-    src="http://code.jquery.com/jquery-3.2.1.js"
-    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-    crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/models/thought.js"></script>
-    <script type="text/javascript" src="js/models/category.js"></script>
-    <script type="text/javascript" src="js/models/tag.js"></script>
-    <script type="text/javascript" src="js/models/user.js"></script>
-    <script type="text/javascript" src="js/models/comment.js"></script>
-    <script type="text/javascript" src="js/seed.js"></script>
 
-    <script type="text/javascript" src="js/controllers/categories.controller.js"></script>
-    <script type="text/javascript" src="js/controllers/comments.controller.js"></script><script type="text/javascript" src="js/controllers/tags.controller.js"></script><script type="text/javascript" src="js/controllers/thoughts.controller.js"></script><script type="text/javascript" src="js/controllers/users.controller.js"></script>
+<!--
+Name: Con - Admin Dashboard with Material Design
+Version: 3.0.0
+Author: _nK
+Website: http://nkdev.info
+Purchase: http://themeforest.net/item/con-material-admin-dashboard-template/10621512?ref=_nK
+Support: http://nk.ticksy.com
+License: You must have a valid license purchased only from ThemeForest (the above link) in order to legally use the theme for your project.
+Copyright 2016.
+-->
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="_nK">
+  <link rel="icon" href="public/images/logo_square_white_bkgd.png">
+
+  <title>I AM HUMAN</title>
+
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+
+  <!-- nanoScroller -->
+  <!-- <link rel="stylesheet" type="text/css" href="bower_components/nanoscroller/bin/css/nanoscroller.css" /> -->
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="public/css/font-awesome.min.css">
+
+  <!-- Material Design Icons -->
+  <!-- <link rel="stylesheet" type="text/css" href="css/material-design-icons.min.css" /> -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+  <!-- Main -->
+  <link rel="stylesheet" type="text/css" href="public/css/con-base.css" />
+
+
+</head>
+
+<!--
+Body
+Options:
+.boxed - boxed layout for content
+-->
+
+<body>
+
+  <!--
+  Top Navbar
+  Options:
+  .navbar-dark - dark color scheme
+  .navbar-static - static navbar
+  .navbar-under - under sidebar
+-->
+<nav class="navbar-top">
+  <div class="nav-wrapper">
+
+    <!-- Sidebar toggle -->
+    <a href="#" class="yay-toggle">
+      <div class="burg1"></div>
+      <div class="burg2"></div>
+      <div class="burg3"></div>
+    </a>
+    <!-- Sidebar toggle -->
+
+    <!-- Logo -->
+    <a href="index.html" class="brand-logo">
+      <img src="public/images/i_am_human.svg" alt="logo" class="responseive-img">
+    </a>
+    <!-- /Logo -->
+
+    <!-- Menu -->
+    <ul>
+      <li class="user">
+        <a class="dropdown-button" data-activates="user-dropdown" href="#!">
+           Account <i class="fa fa-bars right"></i>
+        </a>
+
+        <ul id="user-dropdown" class="dropdown-content flow-text">
+          <li>
+            <a href="page-profile.html">
+              <i class="fa fa-user left"></i> Profile
+            </a>
+          </li>
+          <li>
+            <a href="mail-inbox.html">
+              <i class="fa fa-envelope left"></i> Messages
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="page-sign-in.html">
+              <i class="fa fa-sign-out left"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <!-- /Menu -->
+
+  </div>
+</nav>
+<!-- /Top Navbar -->
+
+<!--
+Yay Sidebar
+Options [you can use all of theme classnames]:
+.yay-hide-to-small         - no hide menu, just set it small with big icons
+.yay-static                - stop using fixed sidebar (will scroll with content)
+.yay-gestures              - to show and hide menu using gesture swipes
+.yay-light                 - light color scheme
+.yay-hide-on-content-click - hide menu on content click
+
+Effects [you can use one of these classnames]:
+.yay-overlay  - overlay content
+.yay-push     - push content to right
+.yay-shrink   - shrink content width
+-->
+<aside class="yaybar yay-shrink yay-hide-to-small yay-gestures yay-light yay-static">
+
+  <div class="top">
+    <div>
+      <!-- Sidebar toggle -->
+      <a href="#" class="yay-toggle">
+        <div class="burg1"></div>
+        <div class="burg2"></div>
+        <div class="burg3"></div>
+      </a>
+      <!-- Sidebar toggle -->
+
+      <!-- Logo -->
+      <a href="#!" class="brand-logo">
+        <!-- <img src="images/logo-white.png" alt="Con"> -->
+      </a>
+      <!-- /Logo -->
+    </div>
+  </div>
+
+  <div class="nano">
+    <div class="nano-content">
+
+      <ul>
+        <li class="yay-user-info">
+          <a href="page-profile.html">
+            <img src="public/images/logo_square_white_bkgd.svg" alt="John Doe" class="circle responsive-img">
+            <h3 class="yay-user-info-name">John Doe</h3>
+            <div class="yay-user-location">
+              <i class="fa fa-map-marker"></i> Las Vegas, NV
+            </div>
+          </a>
+        </li>
+
+        <li class="label">Menu</li>
+
+        <li class="open">
+          <a href="dashboard.html" class="yay-sub-toggle waves-effect waves-blue"> <i class="fa fa-comments"></i> Thoughts
+            <span class="yay-collapse-icon mdi-navigation-expand-more"></span>
+          </a>
+          <ul>
+            <li class="active">
+              <a href="#" class=" waves-effect waves-blue">  New Thought   </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="widgets.html" class=" waves-effect waves-blue"> <i class="fa fa-magic"></i> Widgets </a>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</aside>
+<!-- /Yay Sidebar -->
+
+<!-- Main Content -->
+<section class="content-wrap">
+
+
+  <!-- Breadcrumb -->
+  <div class="page-title">
+
+    <div class="row">
+      <div class="col s12 m9 l10">
+        <h1>Dashboard</h1>
+
+        <ul>
+          <li>
+            <a href="#"><i class="fa fa-home"></i> Home</a> /
+          </li>
+
+          <li>
+            <a href="#">Category</a> /
+          </li>
+
+          <li>
+            <a href='dashboard.html'>Dashboard</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col s12 m3 l2 right-align">
+        <a href="#!" class="btn grey lighten-3 grey-text z-depth-0 chat-toggle"><i class="fa fa-comments"></i></a>
+      </div>
+    </div>
+
+  </div>
+  <!-- /Breadcrumb -->
+<div class="row">
+  <div class="form-here">
+  </div>
+</div>
+  <!-- Stats Panels -->
+  <div class="row">
+    <div class="col l4 s12">
+      <a href="#" class="card-panel stats-card indigo lighten-2 indigo-text text-lighten-5">
+        <i class="fa fa-comments-o"></i>
+        <span class="count">145</span>
+        <div class="name">Feedbacks</div>
+      </a>
+    </div>
+    <div class="col l4 s12">
+      <a href="#" class="card-panel stats-card blue lighten-2 blue-text text-lighten-5">
+        <i class="fa fa-send"></i>
+
+        <div class="graph">
+          <div id="sparkcard1"></div>
+        </div>
+
+        <span class="count">342</span>
+        <div class="name">Posts</div>
+      </a>
+    </div>
+    <div class="col l4 s12">
+      <div class="card-panel stats-card teal lighten-2 green-text text-lighten-5">
+        <div class="progress small teal lighten-1">
+          <div class="teal darken-1" style="width: 42%"></div>
+        </div>
+
+        <i class="fa fa-spinner"></i>
+        <span class="count">42%</span>
+        <div class="name">Server Load</div>
+      </div>
+    </div>
+  </div>
+  <!-- /Stats Panels -->
+
+
+</section>
+<!-- /Main Content -->
+
+<!--
+Chat
+.chat-light - light color scheme
+-->
+<div class="chat chat-light">
+  <div class="layer-overlay"></div>
+
+  <div class="layer-content">
+
+    <!-- Contacts -->
+    <div class="contacts">
+      <!-- Top Bar -->
+      <div class="topbar">
+        <a href="#!" class="text">Chat</a>
+        <a href="#!" class="chat-toggle"><i class="mdi-navigation-close"></i></a>
+      </div>
+      <!-- /Top Bar -->
+
+      <div class="nano">
+        <div class="nano-content">
+
+          <span class="label">Online</span>
+
+          <div class="user">
+            <img src="public/images/user2.jpg" alt="Felecia Castro" class="circle photo">
+
+            <div class="name">Felecia Castro</div>
+            <div class="status">Lorem status</div>
+
+            <div class="online"><i class="green-text fa fa-circle"></i></div>
+          </div>
+
+          <div class="user">
+            <img src="public/images/user3.jpg" alt="Max Brooks" class="circle photo">
+
+            <div class="name">Max Brooks</div>
+            <div class="status">Lorem status</div>
+
+            <div class="online"><i class="green-text fa fa-circle"></i></div>
+          </div>
+
+          <div class="user">
+            <img src="public/images/user4.jpg" alt="Patsy Griffin" class="circle photo">
+
+            <div class="name">Patsy Griffin</div>
+            <div class="status">Lorem status</div>
+
+            <div class="online"><i class="green-text fa fa-circle"></i></div>
+          </div>
+
+          <div class="user">
+            <img src="public/images/user5.jpg" alt="Chloe Morgan" class="circle photo">
+
+            <div class="name">Chloe Morgan</div>
+            <div class="status">Lorem status</div>
+
+            <div class="online"><i class="green-text fa fa-circle"></i></div>
+          </div>
+
+          <div class="user">
+            <img src="public/images/user6.jpg" alt="Vernon Garrett" class="circle photo">
+
+            <div class="name">Vernon Garrett</div>
+            <div class="status">Lorem status</div>
+
+            <div class="online"><i class="yellow-text fa fa-circle"></i></div>
+          </div>
+
+          <div class="user">
+            <img src="public/images/user7.jpg" alt="Greg Mcdonalid" class="circle photo">
+
+            <div class="name">Greg Mcdonalid</div>
+            <div class="status">Lorem status</div>
+
+            <div class="online"><i class="yellow-text fa fa-circle"></i></div>
+          </div>
+
+          <div class="user">
+            <img src="public/images/user8.jpg" alt="Christian Jackson" class="circle photo">
+
+            <div class="name">Christian Jackson</div>
+            <div class="status">Lorem status</div>
+
+            <div class="online"><i class="yellow-text fa fa-circle"></i></div>
+          </div>
+
+
+          <span class="label">Offline</span>
+
+          <div class="user">
+            <img src="public/images/user9.jpg" alt="Willie Kelly" class="circle photo">
+
+            <div class="name">Willie Kelly</div>
+            <div class="status">Lorem status</div>
+          </div>
+
+          <div class="user">
+            <img src="public/images/user10.jpg" alt="Jenny Phillips" class="circle photo">
+
+            <div class="name">Jenny Phillips</div>
+            <div class="status">Lorem status</div>
+          </div>
+
+          <div class="user">
+            <img src="public/images/user11.jpg" alt="Darren Cunningham" class="circle photo">
+
+            <div class="name">Darren Cunningham</div>
+            <div class="status">Lorem status</div>
+          </div>
+
+          <div class="user">
+            <img src="public/images/user12.jpg" alt="Sandra Cole" class="circle photo">
+
+            <div class="name">Sandra Cole</div>
+            <div class="status">Lorem status</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /Contacts -->
+
+    <!-- Messages -->
+    <div class="messages">
+
+      <!-- Top Bar with back link -->
+      <div class="topbar">
+        <a href="#!" class="chat-toggle"><i class="mdi-navigation-close"></i></a>
+        <a href="#!" class="chat-back"><i class="mdi-hardware-keyboard-arrow-left"></i> Back</a>
+      </div>
+      <!-- /Top Bar with back link -->
+
+      <!-- All messages list -->
+      <div class="list">
+        <div class="nano scroll-bottom">
+          <div class="nano-content">
+
+            <div class="date">Monday, Feb 23, 8:23 pm</div>
+
+            <div class="from-me">
+              Hi, Felicia.
+              <br> How are you?
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="from-them">
+              <img src="public/images/user2.jpg" alt="John Doe" class="circle photo"> Hi! I am good!
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="from-me">
+              Glad to see you :)
+              <br> This long text is intended to show how the chat will display it.
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="from-them">
+              <img src="public/images/user2.jpg" alt="John Doe" class="circle photo"> Also, we will send the longest word to show how it will fit in the chat window:
+              <strong>Pneumonoultramicroscopicsilicovolcanoconiosis</strong>
+            </div>
+
+            <div class="date">Friday, Mar 10, 5:07 pm</div>
+
+            <div class="from-me">
+              Hi again!
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="from-them">
+              <img src="public/images/user2.jpg" alt="John Doe" class="circle photo"> Hi! Glad to see you.
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="from-me">
+              I want to add you in my Facebook.
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="from-me">
+              Can you give me your page?
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="from-them">
+              <img src="public/images/user2.jpg" alt="John Doe" class="circle photo"> I do not use Facebook. But you can follow me in Twitter.
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="from-me">
+              It's good idea!
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="from-them">
+              <img src="public/images/user2.jpg" alt="John Doe" class="circle photo"> You can find me here - <a href="https://twitter.com/nkdevv">https://twitter.com/nkdevv</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- /All messages list -->
+
+      <!-- Send message -->
+      <div class="send">
+        <form action="#!">
+          <div class="input-field">
+            <input id="chat-message" type="text" name="chat-message">
+          </div>
+
+          <button class="btn waves-effect z-depth-0"><i class="mdi-content-send"></i></button>
+        </form>
+      </div>
+      <!-- /Send message -->
+
+    </div>
+    <!-- /Messages -->
+  </div>
+
+</div>
+<!-- /Chat -->
+<footer>&copy; 2015
+ All rights reserved. </footer>
+
+
+ <script
+ src="http://code.jquery.com/jquery-3.2.1.js"
+ integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+ crossorigin="anonymous"></script>
+ <script type="text/javascript" src="js/index.js"></script>
+ <script type="text/javascript" src="js/models/thought.js"></script>
+ <script type="text/javascript" src="js/models/category.js"></script>
+ <script type="text/javascript" src="js/models/tag.js"></script>
+ <script type="text/javascript" src="js/models/user.js"></script>
+ <script type="text/javascript" src="js/models/comment.js"></script>
+ <script type="text/javascript" src="js/seed.js"></script>
+
+ <script type="text/javascript" src="js/controllers/categories.controller.js"></script>
+ <script type="text/javascript" src="js/controllers/comments.controller.js"></script><script type="text/javascript" src="js/controllers/tags.controller.js"></script><script type="text/javascript" src="js/controllers/thoughts.controller.js"></script><script type="text/javascript" src="js/controllers/users.controller.js"></script>
+
+  <!-- jQuery RAF (improved animation performance) -->
+  <script type="text/javascript" src="public/js/jquery.requestAnimationFrame.min.js"></script>
+
+  <!-- nanoScroller -->
+  <script type="text/javascript" src="public/js/jquery.nanoscroller.min.js"></script>
+
+  <!-- Materialize -->
+  <script type="text/javascript" src="public/js/materialize.js"></script>
+
+  <!-- Sortable -->
+  <script type="text/javascript" src="public/js/Sortable.min.js"></script>
+
+  <!-- Main -->
+  <script type="text/javascript" src="public/js/_con.min.js"></script>
+
+  <!-- Google Prettify -->
+  <script type="text/javascript" src="public/js/prettify.js"></script>
+
+
   </body>
-</html>
+
+  </html>
