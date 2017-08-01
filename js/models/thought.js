@@ -33,8 +33,7 @@ function createThoughts() {
 
     };
 
-
-  };  
+  };
 };
 
 let Thought = createThoughts()
