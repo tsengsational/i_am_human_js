@@ -14,11 +14,15 @@ let sthought = new Thought("jason's title", "jason's content", jason.id)
 
 let alcohol = new Category("alcohol", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT02TbPV7zc7FWqEu9jhfHj8rQ7_PifYi66ZpP7a1WseZFLdYLyug")
 
+
 let depression = new Category("depression", "http://affinitymagazine.us/wp-content/uploads/2017/04/1468445687-depression.jpg")
 
 let confidence = new Category("confidence", "http://images.agoramedia.com/EHBlogImages/therese-borchard/2015/07/Breaking-Down-the-Shame-of-Male-Depression-RM-722x406.jpg")
 
 new Tag(jthought.id, alcohol.id)
+
+let addiction = new Category("addiction", "https://www.centeronaddiction.org/sites/default/files/inline-addiction-drugs-img%281%29.png")
+
 new Tag(ethought.id, depression.id)
 new Tag(sthought.id, confidence.id)
 
