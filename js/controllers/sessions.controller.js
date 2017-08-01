@@ -1,12 +1,16 @@
 function createSessionsController(){
-  let id = 0
   let current_user = null
 
   return class {
-    constructor(user_id){
-      this.user_id = user_id
+
+    static logIn(username){
+      let user = User.findByUserName(username)
+      if typeof user === 'undefined' {
+        throw new Error('No user with username ' + username)
+      }
+
       this.username = fetch(`http://localhost:3000/users/${user_id}`)
-        .then(respones => return response.json().username)
+        .then((response) => {return response.json().username})
       current_user = this.username
     };
 
@@ -23,4 +27,4 @@ function createSessionsController(){
   }
 }
 
-let SessionController = createSessionsController()
+let SessionsController = createSessionsController()

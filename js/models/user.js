@@ -1,10 +1,10 @@
 function createUsers() {
-  let id = 0
+
 
   return class {
-    constructor(username) {
+    constructor(username, id) {
       this.username = username
-      this.id = ++id
+      this.id = id
       store.users.push(this)
     }
 
@@ -14,18 +14,30 @@ function createUsers() {
       })
   }
 
+  static find(id) {
+    return store.users.find((user) => {
+      return user.id === id
+    })
+  }
+
   static findOrCreate(username) {
     let existingUser = User.findByUserName(username)
     if(existingUser != null) {
       console.log('User already exists')
       return existingUser
     } else {
-      console.log('Created new user')
-      return new User(username)
+      UsersAdapter.create(username)
     }
   }
 
+
+  static createFromApi(userData) {
+    console.log(`User ${userData.username} created`)
+    return new User (userData.username, userData.id)
   }
+
+
+} //end of class
 
 }
 
