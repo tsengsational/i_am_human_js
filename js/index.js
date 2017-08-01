@@ -4,7 +4,7 @@ const store = {categories: [], tags: [], thoughts: [], comments: [], users: []}
 $(() => {
 
 CategoriesController.renderCategories()
-
+CategoriesController.addListenerForCategory('#render-categories', 'click')
 
 
 })

@@ -14,10 +14,15 @@ function createCategoriesController(){
         };
       };
       start += `</div>`
-      debugger
       render(start, '#categories-here')
-
     }
+
+    static addListenerForCategory(selector, eventType){
+      $(selector).on(eventType, function(){
+        CategoriesController.renderCategories()
+      })
+    }
+
   }
 }
 
