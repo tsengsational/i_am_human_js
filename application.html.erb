@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<!--
+Name: Con - Admin Dashboard with Material Design
+Version: 3.0.0
+Author: _nK
+Website: http://nkdev.info
+Purchase: http://themeforest.net/item/con-material-admin-dashboard-template/10621512?ref=_nK
+Support: http://nk.ticksy.com
+License: You must have a valid license purchased only from ThemeForest (the above link) in order to legally use the theme for your project.
+Copyright 2016.
+-->
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="_nK">
+  <link rel="icon" href="images/logo_square_white_bkgd.png">
+
+  <title>I AM HUMAN</title>
+
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <!-- nanoScroller -->
+  <!-- <link rel="stylesheet" type="text/css" href="bower_components/nanoscroller/bin/css/nanoscroller.css" /> -->
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+
+  <!-- Material Design Icons -->
+  <!-- <link rel="stylesheet" type="text/css" href="css/material-design-icons.min.css" /> -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+  <!-- Main -->
+  <link rel="stylesheet" type="text/css" href="css/con-base.css" />
+
+
+</head>
+
+<!--
+Body
+Options:
+.boxed - boxed layout for content
+-->
+
+<body>
+
+  <!--
+  Top Navbar
+  Options:
+  .navbar-dark - dark color scheme
+  .navbar-static - static navbar
+  .navbar-under - under sidebar
+-->
+<nav class="navbar-top">
+  <div class="nav-wrapper">
+
+    <!-- Sidebar toggle -->
+    <a href="#" class="yay-toggle">
+      <div class="burg1"></div>
+      <div class="burg2"></div>
+      <div class="burg3"></div>
+    </a>
+    <!-- Sidebar toggle -->
+
+    <!-- Logo -->
+    <a href="index.html" class="brand-logo">
+      <img src="images/i_am_human.svg" alt="logo" class="responseive-img">
+    </a>
+    <!-- /Logo -->
+
+    <!-- Menu -->
+    <ul>
+      <li>
+        <div id="test-dropdown" class="dropdown-content dropdown-media">
+          <div class="card-panel">
+
+            <div class="media-heading">Messages <a href="mail-compose.html"><i class="mdi-content-add-circle-outline"></i></a></div>
+
+            <div class="media-footer"><a href="mail-inbox.html"><i class="mdi-hardware-keyboard-control"></i></a></div>
+
+            <div class="row mt-0">
+              <div class="col s2">
+                <!-- <img src="assets/_con/images/user2.jpg" alt="" class="circle responsive-img"> -->
+              </div>
+              <div class="col s10">
+                <span class="media-date">9:02 AM</span>
+                <a href="#" class="media-title">Dianne Chambers</a>
+                <span>
+                  Ut feugiat tempus felis, sit amet mattis dolor accumsan quis...
+                </span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s2">
+                <!-- <img src="assets/_con/images/user3.jpg" alt="" class="circle responsive-img"> -->
+              </div>
+              <div class="col s10">
+                <span class="media-date">Dec 19</span>
+                <a href="#" class="media-title">Joanne Stephens</a>
+                <span>
+                  Proin suscipit lobortis porta. Interdum et malesuada fames ac ante ipsum primis in faucibus...
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </li>
+      <li class="user">
+        <a class="dropdown-button" data-activates="user-dropdown" href="#!">
+           Account <i class="fa fa-bars right"></i>
+        </a>
+
+        <ul id="user-dropdown" class="dropdown-content flow-text">
+          <li>
+            <a href="page-profile.html">
+              <i class="fa fa-user left"></i> Profile
+            </a>
+          </li>
+          <li>
+            <a href="mail-inbox.html">
+              <i class="fa fa-envelope left"></i> Messages
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="page-sign-in.html">
+              <i class="fa fa-sign-out left"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <!-- /Menu -->
+
+  </div>
+</nav>
+<!-- /Top Navbar -->
+<%= yield %>
+<footer>&copy; 2015
+ All rights reserved. </footer>
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+
+  <!-- jQuery RAF (improved animation performance) -->
+  <script type="text/javascript" src="js/jquery.requestAnimationFrame.min.js"></script>
+
+  <!-- nanoScroller -->
+  <script type="text/javascript" src="js/jquery.nanoscroller.min.js"></script>
+
+  <!-- Materialize -->
+  <script type="text/javascript" src="js/materialize.js"></script>
+
+  <!-- Sortable -->
+  <script type="text/javascript" src="js/Sortable.min.js"></script>
+
+  <!-- Main -->
+  <script type="text/javascript" src="js/_con.min.js"></script>
+
+  <!-- Google Prettify -->
+  <script type="text/javascript" src="js/prettify.js"></script>
+
+
+  </body>
+
+  </html>
