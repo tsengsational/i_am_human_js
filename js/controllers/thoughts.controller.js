@@ -3,15 +3,18 @@ function createThoughtsController(){
 
     static addListenerToSubmit(){
       $('.create-thought').submit(() => {
+        debugger
         event.preventDefault()
+        $('.form-here').empty()
         this.createFromForm()
+
       })
 
     }
 
     static addListenerToRenderForm(){
       $('body').on('click', '#render-thought-form', () => {
-        render(Thought.formTemplate(), ".form-here" )
+        render(Thought.formTemplate(), ".form-here" ).hide().slideDown('medium')
         this.addListenerToSubmit()
       })
     }
@@ -28,7 +31,6 @@ function createThoughtsController(){
         user_id = user.id
       }
       ThoughtsAdapter.create(title, content, user_id)
-      
     }
 
     static renderNewThought(thoughtData){
