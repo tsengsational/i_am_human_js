@@ -1,6 +1,6 @@
 class ThoughtsAdapter {
   static index(){
-    $.get(`${BASE_URL}/thoughts`, (response) => {
+    return $.get(`${BASE_URL}/thoughts`, (response) => {
       response.forEach(thought => {
         ThoughtsAdapter.saveToStore(thought)
       })
@@ -43,11 +43,21 @@ class ThoughtsAdapter {
     })
   };
 
+  static destroy(id) {
+    Thought.find(id).removeFromStore()
+    $.ajax({
+      method: 'DELETE',
+      url: `${BASE_URL}/thoughts/${id}`,
+      success: (res) => {console.log('Thought deleted')}
+    })
+  }
+
   static saveToStore(thoughtData){
     let possibleThought = Thought.find(thoughtData.id)
     if(typeof possibleThought === 'undefined'){
-      Thought.createFromApi(thoughtData)
+      return Thought.createFromApi(thoughtData)
     }
+    return possibleThought
   };
 
 }

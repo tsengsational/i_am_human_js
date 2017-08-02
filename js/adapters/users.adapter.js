@@ -9,7 +9,6 @@ class UsersAdapter {
   }
 
   static seed(){
-
     this.index().then(seedUsers)
   }
 
@@ -34,8 +33,9 @@ class UsersAdapter {
     // if the user is in the store, cool.  If not, save it to the store
     let possibleUser = User.find(userData.id)
     if(typeof possibleUser === 'undefined') {
-      User.createFromApi(userData)
+      return User.createFromApi(userData)
     }
+    return possibleUser
   }
 
 
