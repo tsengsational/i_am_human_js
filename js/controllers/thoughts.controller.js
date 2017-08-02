@@ -11,33 +11,24 @@ function createThoughtsController(){
 
     static addListenerToRenderForm(){
       $('body').on('click', '#render-thought-form', () => {
-        render(this.formHTML(), ".form-here" )
+        render(Thought.formTemplate(), ".form-here" )
         this.addListenerToSubmit()
       })
     }
 
-    static formHTML(){
-    return `
-      <h3>Create a Thought</h3>
-      <form class="create-thought" action="index.html" method="post">
-        <input type="text" name="thought[title]" placeholder="title" id="title">
-        <input type="text" name="thought[content]" placeholder="content" id="content">
-        <input type="text" name="thought[username]" placeholder="username" id="username">
-        <input type="submit" value="submit">
-      </form>
-      `
-      // debugger
-      // render(html, ".form-here")
-    }
 
     static createFromForm(){
       let title = $('#title').val()
       let content = $('#content').val()
-      let user = User.findOrCreate($('#username').val())
-      let newThought = new Thought(title, content, user.id)
-      // let allUsersThoughts = user.thoughts()
+      let user = User.findByUserName($('#username').val())
+      if (typeof user === 'undefined'){
+        let user_id = 1
+      } else {
+        let user_id = user.id
+      }
+      let newThought = ThoughtsAdapter.create(title, content, user_id)
+      debugger
       render(this.thoughtsHTML(newThought), ".thought-here")
-      // ThoughtsController.usersThoughtsHTML()
 
     }
 

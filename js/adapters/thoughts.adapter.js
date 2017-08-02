@@ -7,7 +7,7 @@ class ThoughtsAdapter {
     })
   };
 
-  static create(title, content, user_id, id) {
+  static create(title, content, user_id) {
     $.post(`${BASE_URL}/thoughts`,
       {thought: {
         title: title,

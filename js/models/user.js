@@ -22,10 +22,10 @@ function createUsers() {
 
   static findOrCreate(username) {
     let existingUser = User.findByUserName(username)
-    if(existingUser != null) {
-      return existingUser
+    if(typeof existingUser != 'undefined') {
+      return Promise.resolve(existingUser)
     } else {
-      UsersAdapter.create(username)
+      return UsersAdapter.create(username)
     }
   }
 
