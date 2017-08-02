@@ -9,7 +9,6 @@ function createThoughtsController(){
         this.createFromForm()
 
       })
-
     }
 
     static addListenerToRenderForm(){
@@ -18,6 +17,25 @@ function createThoughtsController(){
         this.addListenerToSubmit()
       })
     }
+
+    static addListenerToLike(){
+      $('.js-like-button').on('click', () => {
+        let thought = Thought.find(parseInt(event.target.id))
+        thought.addLikes()
+      })
+    }
+
+    static addListenerToEdit(){
+
+    }
+
+    static addListenderToThoughtView(){
+      $('body').on('click', 'js-thought-view', function(event){
+        let thought = Thought.find(parseInt(event.target.id))
+        thought.addView()
+      })
+    }
+
 
 
     static createFromForm(){
@@ -35,17 +53,10 @@ function createThoughtsController(){
 
     static renderNewThought(thoughtData){
       let newThought = Thought.createFromApi(thoughtData)
-      render(ThoughtsController.thoughtsHTML(newThought), ".thought-here")
+      render(newThought.thoughtsHTML(), ".thought-here")
+      ThoughtsController.addListenerToLike()
     }
 
-    static thoughtsHTML(thought){
-      return `
-      <h3>${thought.title}</h3>
-      <p>${thought.content}</p>
-      <button type="delete" class="destroy-thought">Delete this thought</button>
-      <button type="edit" class="edit-thought">Edit this thought</button>
-      `
-    }
 
     static usersThoughtsHTML(allUsersThoughts){
           let html = ""

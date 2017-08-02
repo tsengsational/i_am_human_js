@@ -28,12 +28,16 @@ class ThoughtsAdapter {
       data: {thought: {
               title: thought.title,
               content: thought.content,
-              user_id: thought.user_id
+              user_id: thought.user_id,
+              likes: thought.likes,
+              views: thought.views
             }},
       success: function(response){
         thought.title = response.title;
         thought.content = response.content;
         thought.user_id = response.user_id;
+        thought.likes = response.likes;
+        thought.views = response.views;
         console.log(thought)
       },
     })
