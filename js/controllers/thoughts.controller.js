@@ -21,15 +21,19 @@ function createThoughtsController(){
       let title = $('#title').val()
       let content = $('#content').val()
       let user = User.findByUserName($('#username').val())
+      let user_id;
       if (typeof user === 'undefined'){
-        let user_id = 1
+        user_id = 1
       } else {
-        let user_id = user.id
+        user_id = user.id
       }
-      let newThought = ThoughtsAdapter.create(title, content, user_id)
-      debugger
-      render(this.thoughtsHTML(newThought), ".thought-here")
+      ThoughtsAdapter.create(title, content, user_id)
+      
+    }
 
+    static renderNewThought(thoughtData){
+      let newThought = Thought.createFromApi(thoughtData)
+      render(ThoughtsController.thoughtsHTML(newThought), ".thought-here")
     }
 
     static thoughtsHTML(thought){

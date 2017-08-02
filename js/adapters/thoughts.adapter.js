@@ -14,7 +14,7 @@ class ThoughtsAdapter {
         content: content,
         user_id: user_id
       }},
-      Thought.createFromApi)
+      ThoughtsController.renderNewThought)
   };
 
   static show(id) {
