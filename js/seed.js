@@ -1,9 +1,12 @@
-function createSeedData(){
-
+function seedUsers(){
 
 let jeremy = User.findOrCreate("jeremy646")
 let eli = User.findOrCreate("elisings")
 let jason = User.findOrCreate("sensational")
+
+}
+
+function seedThoughts() {
 
 
 let jthought = new Thought("jeremy's title", "jeremy's content", jeremy.id)
@@ -12,12 +15,22 @@ let ethought = new Thought("eli's title", "eli's content", eli.id)
 
 let sthought = new Thought("jason's title", "jason's content", jason.id)
 
+}
+
+function seedCategories() {
+
+
 let alcohol = new Category("alcohol", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT02TbPV7zc7FWqEu9jhfHj8rQ7_PifYi66ZpP7a1WseZFLdYLyug")
 
 
 let depression = new Category("depression", "http://affinitymagazine.us/wp-content/uploads/2017/04/1468445687-depression.jpg")
 
 let confidence = new Category("confidence", "http://images.agoramedia.com/EHBlogImages/therese-borchard/2015/07/Breaking-Down-the-Shame-of-Male-Depression-RM-722x406.jpg")
+
+}
+
+function seedTags() {
+
 
 new Tag(jthought.id, alcohol.id)
 
