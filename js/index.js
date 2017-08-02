@@ -12,5 +12,5 @@ ThoughtsController.addListenerToRenderForm()
 
 function render(html, where) {
   $(where).empty()
-  $(html).appendTo(where)
+  return $(html).appendTo(where)
 }
