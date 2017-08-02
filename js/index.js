@@ -5,6 +5,7 @@ $(() => {
 
 CategoriesController.renderCategories()
 CategoriesController.addListenerForCategory('#render-categories', 'click')
+ThoughtsController.addListenerToRenderForm()
 
 
 })

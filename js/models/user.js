@@ -36,6 +36,12 @@ function createUsers() {
     return new User (userData.username, userData.id)
   }
 
+  thoughts(){
+    return store.thoughts.filter((thought) => {
+      return thought.user_id === this.id
+    })
+  }
+
 
 } //end of class
 
