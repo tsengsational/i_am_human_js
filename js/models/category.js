@@ -20,7 +20,7 @@ function createCategories () {
     }
 
     static createFromApi(categoryData) {
-      return new Category(categoryData.name, categoryData.image_url, categoryData.id)
+      new Category(categoryData.name, categoryData.image_url, categoryData.id)
     }
 
     template(){
@@ -46,8 +46,6 @@ function createCategories () {
         return 'Thought'
       }
     }
-
-
 
 
 
