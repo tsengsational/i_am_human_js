@@ -23,7 +23,6 @@ function createUsers() {
   static findOrCreate(username) {
     let existingUser = User.findByUserName(username)
     if(existingUser != null) {
-      console.log('User already exists')
       return existingUser
     } else {
       UsersAdapter.create(username)
@@ -32,7 +31,6 @@ function createUsers() {
 
 
   static createFromApi(userData) {
-    console.log(`User ${userData.username} created`)
     return new User (userData.username, userData.id)
   }
 

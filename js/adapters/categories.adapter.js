@@ -1,7 +1,7 @@
 class CategoriesAdapter {
 
   static index() {
-    $.get(`http://localhost:3000/categories`, (response) => {
+    $.get(`${BASE_URL}/categories`, (response) => {
       response.forEach((category) => {
         CategoriesAdapter.saveToStore(category)
       })
@@ -9,15 +9,31 @@ class CategoriesAdapter {
   }
 
   static create(name, image_url) {
-    $.post(`http://localhost:3000/categories`,
+    $.post(`${BASE_URL}/categories`,
       {category: {name: name,
                   image_url: image_url}},
       Category.createFromApi)
   }
 
   static show(id) {
-    $.get(`http://localhost:3000/categories/${id}`, CategoriesAdapter.saveToStore)
+    $.get(`${BASE_URL}/categories/${id}`, CategoriesAdapter.saveToStore)
   }
+
+  static update(category){
+    $.ajax({
+      method: 'PATCH',
+      url: `${BASE_URL}/thoughts/${category.id}`,
+      data: {category: {
+              name: category.name,
+              image_url: category.image_url,
+            }},
+      success: function(response){
+        category.name = response.name;
+        category.image_url = response.image_url;
+        console.log(category)
+      },
+    })
+  };
 
   static saveToStore(categoryData) {
     let possibleCategory = Category.find(categoryData.id)

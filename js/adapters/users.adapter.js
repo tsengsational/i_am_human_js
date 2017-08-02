@@ -1,7 +1,7 @@
 class UsersAdapter {
 
   static index() {
-    $.get(`http://localhost:3000/users`, (response) => {
+    $.get(`${BASE_URL}/users`, (response) => {
       response.forEach((user) => {
         UsersAdapter.saveToStore(user)
       })
@@ -12,7 +12,7 @@ class UsersAdapter {
     // make API call to create user
     // get response back
     // instantiate a new User object with the response data (createFromApi)
-    $.post(`http://localhost:3000/users`,
+    $.post(`${BASE_URL}/users`,
       {user: {username: username}},
       User.createFromApi)
   }
@@ -20,7 +20,7 @@ class UsersAdapter {
 
 
   static show(userId) {
-    $.get(`http://localhost:3000/users/${userId}`, UsersAdapter.saveToStore)
+    $.get(`${BASE_URL}/users/${userId}`, UsersAdapter.saveToStore)
   }
 
   static saveToStore(userData) {
