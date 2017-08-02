@@ -33,6 +33,11 @@ function createThoughts() {
       return new Thought(thoughtData.title, thoughtData.content, thoughtData.user_id, thoughtData.id)
     }
 
+    removeFromStore() {
+      let idx = store.thoughts.indexOf(this)
+      store.thoughts.splice(idx, 1)
+    }
+
   };
 };
 

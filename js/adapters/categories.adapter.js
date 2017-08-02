@@ -38,7 +38,8 @@ class CategoriesAdapter {
   static saveToStore(categoryData) {
     let possibleCategory = Category.find(categoryData.id)
     if(typeof possibleCategory === 'undefined') {
-      Category.createFromApi(categoryData)
+      return Category.createFromApi(categoryData)
     }
+    return possibleCategory
   }
 }
