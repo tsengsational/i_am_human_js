@@ -9,6 +9,14 @@ class TagsAdapter {
     })
   }
 
+  static createTags(newThought, selectCategories){
+    let thoughtID = newThought.id;
+    selectCategories.forEach((category) => {
+      TagsAdapter.create(category.value, parseInt(thoughtID))
+    })
+  }
+
+
   static create(category_id, thought_id) {
     return fetch(`${BASE_URL}/tags`,
       {body: JSON.stringify({tag:
