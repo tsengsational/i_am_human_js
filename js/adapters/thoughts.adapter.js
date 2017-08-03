@@ -9,19 +9,30 @@ class ThoughtsAdapter {
 
   static create(title, content, user_id, selectCategories) {
 
+    let categoryArray = selectCategories.map(category => {
+      return {category_id: parseInt(category)}
+    })
     return fetch(`${BASE_URL}/thoughts`,
-
       {body: JSON.stringify({thought: {
         title: title,
         content: content,
-        user_id: user_id
+        user_id: user_id,
+        tags: categoryArray
         }}),
         method: 'POST',
         headers:{"Content-Type": "application/json"}})
         .then(response => {return response.json()})
-        .then(response => {let newThought = Thought.createFromApi(response);
-        return newThought})
-        .then(newThought => {TagsAdapter.createTags(newThought, selectCategories)})
+        .then(response => {
+          let newThought = Thought.createFromApi(response.thought)
+          response.tags.forEach(tag => {
+            Tag.createFromApi(tag)
+          })
+        })
+
+        // .then(response => {return response.json()})
+        // .then(response => {let newThought = Thought.createFromApi(response);
+        // return newThought})
+        // .then(newThought => {TagsAdapter.createTags(newThought, selectCategories)})
 
 
     // $.post(`${BASE_URL}/thoughts`,
