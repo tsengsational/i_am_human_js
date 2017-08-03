@@ -42,14 +42,16 @@ class CategoriesController {
       $('.create-category').submit(() => {
         event.preventDefault()
         this.createFromForm()
-        $('.form-here').empty()
-
       })
     }
 
     static createFromForm() {
       let name = $('input#name').val()
       let image_url = $('input#image-url').val()
+      if((name == "") || (image_url == "")) {
+        alert("All fields are required")
+        return null
+      }
       $('.form-here').empty()
       CategoriesAdapter.create(name, image_url)
       .then(CategoriesController.renderCategories)

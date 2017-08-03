@@ -5,7 +5,7 @@ function createThoughtsController(){
       $('.create-thought').submit(() => {
         event.preventDefault()
         this.createFromForm()
-        $('.form-here').empty()
+
 
       })
     }
@@ -40,9 +40,16 @@ function createThoughtsController(){
 
     static createFromForm(){
       let selectCategories = [...$('#category-selector option:selected')]
+      selectCategories = selectCategories.map((thing) => {
+        return thing.value
+      })
       selectCategories.shift()
       let title = $('#title').val()
       let content = $('#content').val()
+      if((title == "") || (content == "")) {
+        alert("All fields are required")
+        return null
+      }
       let user = User.findByUserName($('#username').val())
       let user_id;
       if (typeof user === 'undefined'){
@@ -50,6 +57,7 @@ function createThoughtsController(){
       } else {
         user_id = user.id
       }
+      $('.form-here').empty()
       ThoughtsAdapter.create(title, content, user_id, selectCategories)
     }
 

@@ -53,10 +53,10 @@ function createCategories () {
         <h3>Create a Category</h3>
         <form class="create-category" action="index.html" method="post">
           <label for="category[name]">Name</label>
-          <div class="input-field"><input type="text" name="category[name]"  id="name">
+          <div class="input-field"><input type="text" name="category[name] required"  id="name">
           </div>
           <label for="category[image_url]">Image URL</label></div>
-          <div class="input-field"><input type="text" name="category[image_url]" id="image-url">
+          <div class="input-field"><input type="text" name="category[image_url] required" id="image-url">
           <input class="btn indigo white-text waves-effect waves-light" type="submit" value="submit">
         </form>
         `
