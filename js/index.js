@@ -3,6 +3,8 @@ const store = {categories: [], tags: [], thoughts: [], comments: [], users: []}
 
 $(() => {
 
+$('select').material_select();
+
 CategoriesController.renderCategories()
 CategoriesController.addListenerForCategory('#render-categories', 'click')
 ThoughtsController.addListenerToRenderForm()

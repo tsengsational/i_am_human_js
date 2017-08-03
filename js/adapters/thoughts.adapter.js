@@ -8,6 +8,7 @@ class ThoughtsAdapter {
   };
 
   static create(title, content, user_id) {
+
     return fetch(`${BASE_URL}/thoughts`,
     {body: JSON.stringify({thought: {
       title: title,
@@ -23,6 +24,7 @@ class ThoughtsAdapter {
     //     user_id: user_id
     //   }},
     //   ThoughtsController.renderNewThought)
+
   };
 
   static show(id) {
