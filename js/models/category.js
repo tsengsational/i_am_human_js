@@ -26,7 +26,7 @@ function createCategories () {
     template(){
       let thisColor = colors[Math.floor(Math.random() * colors.length)];
       return`<div class="col s12 l4">
-      <a href="#" class="card ${thisColor} waves-effect waves-light lighten-2 ${thisColor}-text text-lighten-5" style="border-radius: 50%;">
+      <a href="#" class="card ${thisColor} waves-effect waves-light lighten-2 ${thisColor}-text text-lighten-5" style="border-radius: 75%;">
       <div class="card-image">
       <img src="${this.image_url}" alt="">
       </div>
