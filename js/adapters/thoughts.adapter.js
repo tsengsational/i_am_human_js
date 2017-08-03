@@ -22,8 +22,6 @@ class ThoughtsAdapter {
         return newThought})
         .then(newThought => {TagsAdapter.createTags(newThought, selectCategories)})
 
-
-
     // $.post(`${BASE_URL}/thoughts`,
     //   {thought: {
     //     title: title,
