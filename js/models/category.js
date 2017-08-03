@@ -35,31 +35,52 @@ function createCategories () {
     template(){
       let thisColor = colors[Math.floor(Math.random() * colors.length)];
       return`<div class="col s12 l4">
-      <a href="#" class="card ${thisColor} waves-effect waves-light lighten-2 ${thisColor}-text text-lighten-5" style="border-radius: 75%;">
+      <a href="#" class="card ${thisColor} waves-effect waves-light lighten-2 ${thisColor}-text text-lighten-5 js-single-category" style="border-radius: 75%;"  id="category-${this.id}">
       <div class="card-image">
       <img src="${this.image_url}" alt="">
       </div>
       <div class="card-content">
       <div class="card-title flow-text" style="text-align: center;"><h2>${this.name.toUpperCase()}</h2></div>
       <div class="" style="text-align: center;">${this.numThoughts()} ${this.pluralize()}</div>
-
       </div>
       </a>
       </div>`
     };
 
+
+
     static formTemplate() {
       return `
-        <h3>Create a Category</h3>
+        <div class="row" style="margin-bottom: 20px;"><div class="card-panel"><h3>Create a Category</h3>
         <form class="create-category" action="index.html" method="post">
+          <div class="input-field">
           <label for="category[name]">Name</label>
-          <div class="input-field"><input type="text" name="category[name] required"  id="name">
+
+          <input type="text" name="category[name]"  id="name">
           </div>
-          <label for="category[image_url]">Image URL</label></div>
-          <div class="input-field"><input type="text" name="category[image_url] required" id="image-url">
+          <div class="input-field">
+          <label for="category[image_url]">Image URL</label>
+          <input type="text" name="category[image_url]" id="image-url"></div>
           <input class="btn indigo white-text waves-effect waves-light" type="submit" value="submit">
-        </form>
+        </form></div></div>
         `
+    }
+
+    singleCategoryTemplate(){
+      return `
+      <div class="row">
+          <div class="col s12 m6 l6">
+            <img src="${this.image_url}" class="responsive-img" style="border-radius: 50%;">
+          </div>
+          <div class="col s12 m6 l6">
+            <h1>${this.name}</h1>
+          </div>
+      </div>
+      <div class="row">
+        <div class="thoughts-here">
+        </div>
+      </div>
+      `
     }
 
     pluralize(){
