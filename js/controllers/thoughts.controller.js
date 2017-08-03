@@ -25,6 +25,7 @@ function createThoughtsController(){
         let thought = Thought.find(id)
         clearPage()
         render(thought.thoughtsHTML(), '.thought-here')
+        CommentsController.addListenerToCommentForm()
       })
     }
 
