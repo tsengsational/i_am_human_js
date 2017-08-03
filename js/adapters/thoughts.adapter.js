@@ -15,7 +15,7 @@ class ThoughtsAdapter {
       content: content,
       user_id: user_id
     }}), method: 'POST', headers:{"Content-Type": "application/json"}
-  }).then(response => {return response.json()}).then(ThoughtsController.renderNewThought)
+    }).then(response => {return response.json()}).then(ThoughtsController.renderNewThought)
 
     // $.post(`${BASE_URL}/thoughts`,
     //   {thought: {

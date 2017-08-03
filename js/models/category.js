@@ -19,8 +19,14 @@ function createCategories () {
       })
     }
 
+    static findByName(name) {
+      return store.categories.find((category) => {
+        return category.name == name
+      })
+    }
+
     static createFromApi(categoryData) {
-      new Category(categoryData.name, categoryData.image_url, categoryData.id)
+      return new Category(categoryData.name, categoryData.image_url, categoryData.id)
     }
 
     template(){

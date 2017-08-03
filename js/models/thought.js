@@ -17,6 +17,12 @@ function createThoughts() {
       })
     };
 
+    static findByTitle(title) {
+      return store.thoughts.find((thought) => {
+        return thought.title == title
+      })
+    }
+
     addLikes(){
       this.likes++
       ThoughtsAdapter.update(this)
