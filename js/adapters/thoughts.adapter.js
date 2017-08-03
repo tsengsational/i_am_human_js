@@ -7,16 +7,30 @@ class ThoughtsAdapter {
     })
   };
 
-  static create(title, content, user_id) {
+  static create(title, content, user_id, selectCategories) {
 
-
-    $.post(`${BASE_URL}/thoughts`,
-      {thought: {
+    return fetch(`${BASE_URL}/thoughts`,
+      {body: JSON.stringify({thought: {
         title: title,
         content: content,
         user_id: user_id
-      }},
-      ThoughtsController.renderNewThought)
+        }}),
+        method: 'POST',
+        headers:{"Content-Type": "application/json"}})
+        .then(response => {return response.json()})
+        .then(response => {let newThought = Thought.createFromApi(response);
+        return newThought})
+        .then(newThought => {TagsAdapter.createTags(newThought, selectCategories)})
+
+
+
+    // $.post(`${BASE_URL}/thoughts`,
+    //   {thought: {
+    //     title: title,
+    //     content: content,
+    //     user_id: user_id
+    //   }},
+      // ThoughtsController.renderNewThought)
   };
 
   static show(id) {

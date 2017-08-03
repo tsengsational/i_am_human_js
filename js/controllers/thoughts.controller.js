@@ -41,7 +41,6 @@ function createThoughtsController(){
     static createFromForm(){
       let selectCategories = [...$('#category-selector option:selected')]
       selectCategories.shift()
-
       let title = $('#title').val()
       let content = $('#content').val()
       let user = User.findByUserName($('#username').val())
@@ -51,11 +50,12 @@ function createThoughtsController(){
       } else {
         user_id = user.id
       }
-      ThoughtsAdapter.create(title, content, user_id)
+      ThoughtsAdapter.create(title, content, user_id, selectCategories)
     }
 
     static renderNewThought(thoughtData){
       let newThought = Thought.createFromApi(thoughtData)
+
       render(newThought.thoughtsHTML(), ".thought-here")
       ThoughtsController.addListenerToLike()
     }
