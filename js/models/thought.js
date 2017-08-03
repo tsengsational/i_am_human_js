@@ -73,6 +73,8 @@ function createThoughts() {
       <button class="btn indigo lighten-3 white-text waves-effect waves-light z-depth-0 hoverable js-like-button" id="${this.id}">Like</button>
       <button class="btn indigo lighten-3 white-text waves-effect waves-light z-depth-0 hoverable js-delete-thought-button" id="${this.id}">Delete</button>
       <button class="btn indigo lighten-3 white-text waves-effect waves-light z-depth-0 hoverable js-edit-thought-button" id="${this.id}">Edit</button>
+      <div class="comments-here">
+      </div>
       `
     }
 

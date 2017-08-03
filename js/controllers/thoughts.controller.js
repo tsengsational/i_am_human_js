@@ -19,6 +19,15 @@ function createThoughtsController(){
       })
     }
 
+    static addListenertoThoughtLink(){
+      $('.js-thought-view').on('click', event => {
+        let id = parseInt(event.target.id.split('-')[1])
+        let thought = Thought.find(id)
+        clearPage()
+        render(thought.thoughtsHTML(), '.thought-here')
+      })
+    }
+
     static addListenerToLike(){
       $('.js-like-button').on('click', () => {
         let thought = Thought.find(parseInt(event.target.id))
