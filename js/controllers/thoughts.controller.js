@@ -12,6 +12,7 @@ function createThoughtsController(){
 
     static addListenerToRenderForm(){
       $('body').on('click', '#render-thought-form', () => {
+        clearPage()
         render(Thought.formTemplate(), ".form-here" ).hide().slideDown('medium')
         $('select').material_select()
         this.addListenerToSubmit()
@@ -35,6 +36,7 @@ function createThoughtsController(){
         thought.addView()
       })
     }
+
 
 
 

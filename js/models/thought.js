@@ -43,7 +43,7 @@ function createThoughts() {
       }).join(' ')
       start += catArr
       return `
-        <h3>Create a Thought</h3>
+        <div class="row" style="margin-bottom: 20px;"><div class="card-panel"><h3>Create a Thought</h3>
         <form class="create-thought" action="index.html" method="post">
           <div class="input-field"><input type="text" name="thought[title]"  id="title">
           <label for="thought[title]">Title</label>
@@ -58,7 +58,7 @@ function createThoughts() {
           </select>
           </div>
           <input class="btn indigo white-text waves-effect waves-light" type="submit" value="submit">
-        </form>
+        </form></div></div>
         `
     }
 

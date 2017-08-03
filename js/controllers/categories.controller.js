@@ -1,6 +1,7 @@
 class CategoriesController {
 
     static renderCategories(){
+      clearPage()
       let start = '<div class="row">'
       let html = store.categories.map((category)=>{
         return category.template()
@@ -14,7 +15,7 @@ class CategoriesController {
         };
       };
       start += `</div>`
-      render(start, '#categories-here')
+      render(start, '.categories-here').hide().fadeIn()
       CategoriesController.addListenerForForm()
     }
 
@@ -26,15 +27,23 @@ class CategoriesController {
     }
 
     static addListenerForForm() {
-      console.log('adding listener')
       $('#render-category-form').on('click', function(){
         CategoriesController.renderForm()
       })
     }
 
+    static addListenertoRenderCategory(){
+      $('body').on('click', '.js-single-category', event => {
+        let categoryID = $(event.target).parents('a')[0].id.split('-')[1]
+        let category = Category.find(parseInt(categoryID))
+        debugger
+        clearPage()
+        render(category.singleCategoryTemplate(), '.categories-here')
+      })
+    }
+
     static renderForm() {
-      $('.form-here').empty()
-      render(Category.formTemplate(), $('.form-here'))
+      render(Category.formTemplate(), $('.form-here')).hide().slideDown('medium')
       CategoriesController.addListenerForSubmit()
     }
 
