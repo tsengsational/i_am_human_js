@@ -8,18 +8,6 @@ function seedUsers(){
   // console.log("done")
 }
 
-function seedThoughts() {
-
-  let jeremy_id = User.findByUserName("jeremy646").id
-  let eli_id = User.findByUserName("elisings").id
-  let tseng_id = User.findByUserName("tsengsational").id
-
-  return ThoughtsAdapter.create("jeremy's title", "jeremy's content", jeremy_id)
-  .then(() => {return ThoughtsAdapter.create("eli's title", "eli's content", eli_id)})
-  .then(() => {return ThoughtsAdapter.create("jason's title", "jason's content", tseng_id)})
-
-}
-
 function seedCategories() {
 
   return CategoriesAdapter.create("alcohol", "https://www.discoveryplace.info/sites/default/files/alcoholic1.jpg")
@@ -28,6 +16,24 @@ function seedCategories() {
   .then(() => {return CategoriesAdapter.create("addiction", "https://www.centeronaddiction.org/sites/default/files/inline-addiction-drugs-img%281%29.png")})
 
 }
+
+function seedThoughts() {
+
+  let jeremy_id = User.findByUserName("jeremy646").id
+  let eli_id = User.findByUserName("elisings").id
+  let tseng_id = User.findByUserName("tsengsational").id
+
+  let ct0 = Category.findByName("alcohol").id
+  let ct1 = Category.findByName("depression").id
+  let ct2 = Category.findByName("confidence").id
+  let ct3 = Category.findByName("addiction").id
+
+  return ThoughtsAdapter.create("jeremy's title", "jeremy's content", jeremy_id, [ct0, ct1])
+  .then(() => {return ThoughtsAdapter.create("eli's title", "eli's content", eli_id, [ct2])})
+  .then(() => {return ThoughtsAdapter.create("jason's title", "jason's content", tseng_id, [ct3])})
+
+}
+
 
 
 function seedTags() {
@@ -50,8 +56,6 @@ function seedTags() {
 UsersAdapter.index()
 .then(ThoughtsAdapter.index)
 .then(CategoriesAdapter.index)
-.then(TagsAdapter.index)
 .then(seedUsers)
-.then(seedThoughts)
 .then(seedCategories)
-.then(seedTags)
+.then(seedThoughts)
