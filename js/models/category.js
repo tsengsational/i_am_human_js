@@ -55,6 +55,7 @@ function createCategories () {
         <form class="create-category" action="index.html" method="post">
           <div class="input-field">
           <label for="category[name]">Name</label>
+
           <input type="text" name="category[name]"  id="name">
           </div>
           <div class="input-field">
