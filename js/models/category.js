@@ -48,10 +48,26 @@ function createCategories () {
       </div>`
     };
 
+    static formTemplate() {
+      return `
+        <h3>Create a Category</h3>
+        <form class="create-category" action="index.html" method="post">
+          <label for="category[name]">Name</label>
+          <div class="input-field"><input type="text" name="category[name]"  id="name">
+          </div>
+          <label for="category[image_url]">Image URL</label></div>
+          <div class="input-field"><input type="text" name="category[image_url]" id="image-url">
+          <input class="btn indigo white-text waves-effect waves-light" type="submit" value="submit">
+        </form>
+        `
+    }
+
     pluralize(){
       if(this.numThoughts > 1){
         return 'Thoughts'
-      }else{
+      } else if (this.numThoughts === 0){
+        return 'Thoughts'
+      } else {
         return 'Thought'
       }
     }
