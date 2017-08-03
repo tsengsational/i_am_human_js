@@ -17,6 +17,12 @@ function createThoughts() {
       })
     };
 
+    static findByTitle(title) {
+      return store.thoughts.find((thought) => {
+        return thought.title == title
+      })
+    }
+
     addLikes(){
       this.likes++
       ThoughtsAdapter.update(this)
@@ -31,19 +37,27 @@ function createThoughts() {
 
     static formTemplate(){
       let categories = store.categories
+      let start = `<option defualtSelected:false disabled selected>Choose your categories</option>`
       let catArr = categories.map(function(category){
-        return `<option value="${category.id}">${category.name}</option>`
+        return`<option value="${category.id}">${category.name}</option>`
       }).join(' ')
+      start += catArr
       return `
         <h3>Create a Thought</h3>
         <form class="create-thought" action="index.html" method="post">
-          <input type="text" name="thought[title]" placeholder="title" id="title">
-          <input type="text" name="thought[content]" placeholder="content" id="content">
-          <input type="text" name="thought[username]" placeholder="username" id="username">
-          <select class="js-select-categories">
-          ${catArr}
+          <div class="input-field"><input type="text" name="thought[title]"  id="title">
+          <label for="thought[title]">Title</label>
+          </div>
+          <div class="input-field"><input type="text" name="thought[content]" id="content">
+          <label for="thought[content]">Content</label></div>
+          <div class="input-field"><input type="text" name="thought[username]" id="username">
+          <label for="thought[username]">Username</label></div>
+          <div class="input-field">
+          <select multiple class="js-select-categories" id="category-selector">
+          ${start}
           </select>
-          <input type="submit" value="submit">
+          </div>
+          <input class="btn indigo white-text waves-effect waves-light" type="submit" value="submit">
         </form>
         `
     }
@@ -63,7 +77,15 @@ function createThoughts() {
     }
 
     static createFromApi(thoughtData){
+      if(thoughtData.id == null) {
+        throw new Error('Unable to create thought')
+      }
       return new Thought(thoughtData.title, thoughtData.content, thoughtData.user_id, thoughtData.id)
+    }
+
+    removeFromStore() {
+      let idx = store.thoughts.indexOf(this)
+      store.thoughts.splice(idx, 1)
     }
 
   };

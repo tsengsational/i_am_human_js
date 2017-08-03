@@ -19,8 +19,17 @@ function createCategories () {
       })
     }
 
+    static findByName(name) {
+      return store.categories.find((category) => {
+        return category.name == name
+      })
+    }
+
     static createFromApi(categoryData) {
-      new Category(categoryData.name, categoryData.image_url, categoryData.id)
+      if(categoryData.id == null) {
+        throw new Error('Unable to create category')
+      }
+      return new Category(categoryData.name, categoryData.image_url, categoryData.id)
     }
 
     template(){

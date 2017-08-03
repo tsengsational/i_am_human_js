@@ -1,20 +1,36 @@
 class ThoughtsAdapter {
   static index(){
-    $.get(`${BASE_URL}/thoughts`, (response) => {
+    return $.get(`${BASE_URL}/thoughts`, (response) => {
       response.forEach(thought => {
         ThoughtsAdapter.saveToStore(thought)
       })
     })
   };
 
-  static create(title, content, user_id) {
-    $.post(`${BASE_URL}/thoughts`,
-      {thought: {
+  static create(title, content, user_id, selectCategories) {
+
+    return fetch(`${BASE_URL}/thoughts`,
+
+      {body: JSON.stringify({thought: {
         title: title,
         content: content,
         user_id: user_id
-      }},
-      ThoughtsController.renderNewThought)
+        }}),
+        method: 'POST',
+        headers:{"Content-Type": "application/json"}})
+        .then(response => {return response.json()})
+        .then(response => {let newThought = Thought.createFromApi(response);
+        return newThought})
+        .then(newThought => {TagsAdapter.createTags(newThought, selectCategories)})
+
+
+    // $.post(`${BASE_URL}/thoughts`,
+    //   {thought: {
+    //     title: title,
+    //     content: content,
+    //     user_id: user_id
+    //   }},
+      // ThoughtsController.renderNewThought)
   };
 
   static show(id) {
@@ -43,11 +59,21 @@ class ThoughtsAdapter {
     })
   };
 
+  static destroy(id) {
+    Thought.find(id).removeFromStore()
+    $.ajax({
+      method: 'DELETE',
+      url: `${BASE_URL}/thoughts/${id}`,
+      success: (res) => {console.log('Thought deleted')}
+    })
+  }
+
   static saveToStore(thoughtData){
     let possibleThought = Thought.find(thoughtData.id)
     if(typeof possibleThought === 'undefined'){
-      Thought.createFromApi(thoughtData)
+      return Thought.createFromApi(thoughtData)
     }
+    return possibleThought
   };
 
 }
