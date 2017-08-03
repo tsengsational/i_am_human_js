@@ -9,12 +9,6 @@ class TagsAdapter {
     })
   }
 
-  static createTags(newThought, selectCategories){
-    let thoughtID = newThought.id;
-    selectCategories.forEach((category) => {
-      TagsAdapter.create(category.value, parseInt(thoughtID))
-    })
-  }
 
 
   static create(category_id, thought_id) {
@@ -23,6 +17,25 @@ class TagsAdapter {
         {category_id: category_id,
         thought_id: thought_id
       }}), method: 'POST', headers:{"Content-Type": "application/json"}})
+      .then(response => {return response.json()})
+      .then(Tag.createFromApi)
+  }
+
+  static createTags(newThought, selectCategories){
+    let thoughtID = newThought.id;
+    TagsAdapter.batchCreate(thoughtID, selectCategories)
+  }
+
+  static batchCreate(thoughtID, selectCategories) {
+    let body = {tags: {tags:[]}}
+    selectCategories.forEach((category) => {
+      body.tags.tags.push({tag:
+      {category_id: parseInt(category),
+      thought_id: thoughtID}})
+    })
+
+    return fetch(`${BASE_URL}/tags`,
+      {body: JSON.stringify(body), method: 'POST', headers:{"Content-Type": "application/json"}})
       .then(response => {return response.json()})
       .then(Tag.createFromApi)
   }
