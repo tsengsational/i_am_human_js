@@ -10,6 +10,7 @@ class CommentsAdapter {
   }
 
   static create(content, thought_id, user_id) {
+    let html;
     return fetch(`${BASE_URL}/comments`,
       {body: JSON.stringify({comment:
         {content: content,
@@ -17,7 +18,17 @@ class CommentsAdapter {
         user_id: user_id
       }}), method: 'POST', headers:{"Content-Type": "application/json"}})
       .then(response => {return response.json()})
-      .then(Comment.createFromApi)
+      .then(response => {let comment = Comment.createFromApi(response); return comment})
+      .then(comment => {
+        let thought = Thought.find(comment.thought_id)
+         html = thought.comments().map(comment => {
+          return comment.commentHTML()
+        })
+        // debugger
+        $('.comments-here').empty()
+        $('.comments-here').append(html)
+        // render(html, ".comments-here")
+      });
   }
 
   static show(id) {

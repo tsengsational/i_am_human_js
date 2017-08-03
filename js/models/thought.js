@@ -70,10 +70,32 @@ function createThoughts() {
       return `
       <h3>${this.title}</h3>
       <p>${this.content}</p>
+      <div class="get-thought-id" id="thoughtID-${this.id}"> </div>
       <button class="btn indigo lighten-3 white-text waves-effect waves-light z-depth-0 hoverable js-like-button" id="${this.id}">Like</button>
       <button class="btn indigo lighten-3 white-text waves-effect waves-light z-depth-0 hoverable js-delete-thought-button" id="${this.id}">Delete</button>
       <button class="btn indigo lighten-3 white-text waves-effect waves-light z-depth-0 hoverable js-edit-thought-button" id="${this.id}">Edit</button>
+      <div class="create-comments-here">
+      <br>
+      <p> add comment </p>
+      <form class="comment-form">
+      <label for="comment[username]">Username:</label>
+      <input type="text-field" name="comment[username]" id="comment-user"></input>
+      <br>
+      <label for="comment[content]">Content:</label>
+      <input type="text" name="comment[content]" id="comment-content"></input>
+      <br>
+      <input type="submit" value="add comment" </input>
+      </form>
+      </div>
+      <div class="comments-here">
+      </div>
       `
+    }
+
+    comments(){
+      return store.comments.filter((comment) => {
+        return comment.thought_id === this.id
+      })
     }
 
     static createFromApi(thoughtData){

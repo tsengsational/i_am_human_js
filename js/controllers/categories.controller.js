@@ -36,9 +36,16 @@ class CategoriesController {
       $('body').on('click', '.js-single-category', event => {
         let categoryID = $(event.target).parents('a')[0].id.split('-')[1]
         let category = Category.find(parseInt(categoryID))
-        debugger
+        // debugger
         clearPage()
         render(category.singleCategoryTemplate(), '.categories-here')
+        // call method that makes ajax request to get all thoughts of this category and return it then render the return value
+        let thoughts = CategoriesAdapter.categoriesThoughts(category)
+        // debugger
+        console.log(thoughts)
+        // render onto this category thoughts space
+
+
       })
     }
 

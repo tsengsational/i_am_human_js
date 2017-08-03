@@ -8,6 +8,20 @@ class CategoriesAdapter {
     })
   }
 
+
+  static categoriesThoughts(category){
+    return fetch(`${BASE_URL}/categories/${category.id}/thoughts`)
+    .then(response => {return response.json()})
+    .then(thoughts => {
+      let thoughtLinks = thoughts.map(thought => {
+        let foundThought = Thought.find(thought.id)
+        return foundThought.linkHTML()
+      }).join(" ");
+      render(thoughtLinks, ".thoughts-here")
+      ThoughtsController.addListenertoThoughtLink()
+    })
+  }
+
   static create(name, image_url) {
     return fetch(`${BASE_URL}/categories`,
     {body: JSON.stringify({category: {
