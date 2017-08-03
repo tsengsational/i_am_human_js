@@ -11,6 +11,7 @@ $('.responsive-img').on('click', function(event) {
 CategoriesController.renderCategories()
 CategoriesController.addListenerForCategory('#render-categories', 'click')
 ThoughtsController.addListenerToRenderForm()
+CategoriesController.addListenertoRenderCategory()
 
 
 })
@@ -18,4 +19,8 @@ ThoughtsController.addListenerToRenderForm()
 function render(html, where) {
   $(where).empty()
   return $(html).appendTo(where)
+}
+
+function clearPage(){
+  $('.js-clear').empty()
 }
