@@ -26,6 +26,9 @@ function createCategories () {
     }
 
     static createFromApi(categoryData) {
+      if(categoryData.id == null) {
+        throw new Error('Unable to create category')
+      }
       return new Category(categoryData.name, categoryData.image_url, categoryData.id)
     }
 

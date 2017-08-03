@@ -48,6 +48,10 @@ function seedTags() {
 
 
 UsersAdapter.index()
+.then(ThoughtsAdapter.index)
+.then(CategoriesAdapter.index)
+.then(TagsAdapter.index)
 .then(seedUsers)
 .then(seedThoughts)
 .then(seedCategories)
+.then(seedTags)

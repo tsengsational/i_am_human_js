@@ -17,6 +17,9 @@ function createComments () {
     }
 
     static createFromApi(commentData) {
+      if(commentData.id == null) {
+        throw new Error('Unable to create comment')
+      }
       return new Comment (commentData.content, commentData.thought_id, commentData.user_id, commentData.id)
     }
 

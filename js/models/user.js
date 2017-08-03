@@ -31,6 +31,9 @@ function createUsers() {
 
 
   static createFromApi(userData) {
+    if(userData.id == null) {
+      throw new Error('Unable to create user')
+    }
     return new User (userData.username, userData.id)
   }
 
