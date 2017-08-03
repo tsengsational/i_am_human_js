@@ -1,5 +1,5 @@
-function createCategoriesController(){
-  return class{
+class CategoriesController {
+
     static renderCategories(){
       let start = '<div class="row">'
       let html = store.categories.map((category)=>{
@@ -15,15 +15,48 @@ function createCategoriesController(){
       };
       start += `</div>`
       render(start, '#categories-here')
+      CategoriesController.addListenerForForm()
     }
 
     static addListenerForCategory(selector, eventType){
       $(selector).on(eventType, function(){
         CategoriesController.renderCategories()
+        CategoriesController.addListenerForForm()
       })
     }
 
-  }
-}
+    static addListenerForForm() {
+      console.log('adding listener')
+      $('#render-category-form').on('click', function(){
+        CategoriesController.renderForm()
+      })
+    }
 
-let CategoriesController = createCategoriesController()
+    static renderForm() {
+      $('.form-here').empty()
+      render(Category.formTemplate(), $('.form-here'))
+      CategoriesController.addListenerForSubmit()
+    }
+
+    static addListenerForSubmit() {
+      $('.create-category').submit(() => {
+        event.preventDefault()
+        this.createFromForm()
+        $('.form-here').empty()
+
+      })
+    }
+
+    static createFromForm() {
+      let name = $('input#name').val()
+      let image_url = $('input#image-url').val()
+      $('.form-here').empty()
+      CategoriesAdapter.create(name, image_url)
+      .then(CategoriesController.renderCategories)
+    }
+
+
+
+
+
+  }

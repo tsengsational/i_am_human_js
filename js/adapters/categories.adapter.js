@@ -9,7 +9,6 @@ class CategoriesAdapter {
   }
 
   static create(name, image_url) {
-
     return fetch(`${BASE_URL}/categories`,
     {body: JSON.stringify({category: {
       name: name,

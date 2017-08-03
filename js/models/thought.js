@@ -37,7 +37,7 @@ function createThoughts() {
 
     static formTemplate(){
       let categories = store.categories
-      let start = `<option defualtSelected:false disabled selected>Choose your categories</option>`
+      let start = `<option defaultSelected:false disabled selected>Choose your categories</option>`
       let catArr = categories.map(function(category){
         return`<option value="${category.id}">${category.name}</option>`
       }).join(' ')
