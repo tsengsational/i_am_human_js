@@ -33,6 +33,22 @@ function createThoughts() {
       ThoughtsAdapter.update(this)
     }
 
+    comments(){
+      return store.comments.filter((comment) => {
+        return comment.thought_id = this.id
+      })
+    }
+
+    commentsWithHTML(){
+      let html;
+      this.comments().forEach((comment) => {
+        html += comment.commentHTML()
+      })
+      return html
+    }
+
+
+
 
 
     static formTemplate(){
@@ -73,6 +89,13 @@ function createThoughts() {
       <button class="btn indigo lighten-3 white-text waves-effect waves-light z-depth-0 hoverable js-like-button" id="${this.id}">Like</button>
       <button class="btn indigo lighten-3 white-text waves-effect waves-light z-depth-0 hoverable js-delete-thought-button" id="${this.id}">Delete</button>
       <button class="btn indigo lighten-3 white-text waves-effect waves-light z-depth-0 hoverable js-edit-thought-button" id="${this.id}">Edit</button>
+      <div class="comment-section">
+      </div>
+      <form class="create-comment" action="index.html" method="post">
+      <input type="text" name="thought[comment]" id="comment">
+      <label for="thought[comment]">Comment</label>
+      <input class="btn indigo white-text waves-effect waves-light" type="submit" value="submit">
+      </form>
       `
     }
 

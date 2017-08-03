@@ -16,6 +16,13 @@ function createComments () {
       })
     }
 
+    commentHTML(){
+      let user = User.find(this.user_id)
+      return `
+      <p>${user.username}: ${this.content}
+      `
+    }
+
     static createFromApi(commentData) {
       if(commentData.id == null) {
         throw new Error('Unable to create comment')

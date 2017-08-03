@@ -21,16 +21,9 @@ class ThoughtsAdapter {
         .then(response => {return response.json()})
         .then(response => {let newThought = Thought.createFromApi(response);
         return newThought})
-        .then(newThought => {TagsAdapter.createTags(newThought, selectCategories)})
-
-
-    // $.post(`${BASE_URL}/thoughts`,
-    //   {thought: {
-    //     title: title,
-    //     content: content,
-    //     user_id: user_id
-    //   }},
-      // ThoughtsController.renderNewThought)
+        .then(newThought => {TagsAdapter.createTags(newThought, selectCategories); return newThought})
+        .then(newThought => {ThoughtsController.renderNewThought(newThought);})
+      // ThoughtsController.renderNewThought
   };
 
   static show(id) {
