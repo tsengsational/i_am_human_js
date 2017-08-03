@@ -9,10 +9,18 @@ class CategoriesAdapter {
   }
 
   static create(name, image_url) {
-    $.post(`${BASE_URL}/categories`,
-      {category: {name: name,
-                  image_url: image_url}},
-      Category.createFromApi)
+
+    return fetch(`${BASE_URL}/categories`,
+    {body: JSON.stringify({category: {
+      name: name,
+      image_url: image_url
+    }}), method: 'POST', headers:{"Content-Type": "application/json"}
+    }).then(response => {return response.json()}).then(Category.createFromApi)
+
+    // $.post(`${BASE_URL}/categories`,
+    //   {category: {name: name,
+    //               image_url: image_url}},
+    //   Category.createFromApi)
   }
 
   static show(id) {
@@ -22,7 +30,7 @@ class CategoriesAdapter {
   static update(category){
     $.ajax({
       method: 'PATCH',
-      url: `${BASE_URL}/thoughts/${category.id}`,
+      url: `${BASE_URL}/categories/${category.id}`,
       data: {category: {
               name: category.name,
               image_url: category.image_url,

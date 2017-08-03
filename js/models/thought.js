@@ -17,6 +17,12 @@ function createThoughts() {
       })
     };
 
+    static findByTitle(title) {
+      return store.thoughts.find((thought) => {
+        return thought.title == title
+      })
+    }
+
     addLikes(){
       this.likes++
       ThoughtsAdapter.update(this)
@@ -71,6 +77,9 @@ function createThoughts() {
     }
 
     static createFromApi(thoughtData){
+      if(thoughtData.id == null) {
+        throw new Error('Unable to create thought')
+      }
       return new Thought(thoughtData.title, thoughtData.content, thoughtData.user_id, thoughtData.id)
     }
 

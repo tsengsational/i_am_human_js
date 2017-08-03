@@ -15,6 +15,9 @@ function createTags() {
     }
 
     static createFromApi(tagData) {
+      if(tagData.id == null) {
+        throw new Error('Unable to create tag')
+      }
       return new Tag (tagData.category_id, tagData.thought_id, tagData.id)
     }
 
