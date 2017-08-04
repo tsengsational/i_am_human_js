@@ -1,10 +1,11 @@
 function seedUsers(){
   console.log('seeding users...')
-
+  if(store.users.length < 4){
   return User.findOrCreate("Anonymous")
   .then(()=> {return User.findOrCreate("jeremy646")})
   .then(() => {return User.findOrCreate("elisings")})
   .then(()=> {return User.findOrCreate("tsengsational")})
+  }
 
   // console.log("done")
 }
@@ -12,12 +13,14 @@ function seedUsers(){
 function seedCategories() {
   console.log('seeding categories...')
 
+  if(store.categories.length < 4){
   return CategoriesAdapter.create("alcohol", "https://www.discoveryplace.info/sites/default/files/alcoholic1.jpg")
   .then(() => {return CategoriesAdapter.create("depression", "http://affinitymagazine.us/wp-content/uploads/2017/04/1468445687-depression.jpg")})
   .then(() => {return CategoriesAdapter.create("confidence", "http://images.agoramedia.com/EHBlogImages/therese-borchard/2015/07/Breaking-Down-the-Shame-of-Male-Depression-RM-722x406.jpg")})
   .then(() => {return CategoriesAdapter.create("addiction", "https://www.centeronaddiction.org/sites/default/files/inline-addiction-drugs-img%281%29.png")})
-
+  }
 }
+
 
 function seedThoughts() {
   console.log('seeding thoughts...')
@@ -31,10 +34,11 @@ function seedThoughts() {
   let ct2 = Category.findByName("confidence").id
   let ct3 = Category.findByName("addiction").id
 
+  if(store.thoughts.length < 3){
   return ThoughtsAdapter.create("jeremy's title", "jeremy's content", jeremy_id, [ct0, ct1])
   .then(() => {return ThoughtsAdapter.create("eli's title", "eli's content", eli_id, [ct2])})
   .then(() => {return ThoughtsAdapter.create("jason's title", "jason's content", tseng_id, [ct3])})
-
+  }
 }
 
 
@@ -49,10 +53,11 @@ function seedTags() { // currently we do not call this function
   let th1 = Thought.findByTitle("jason's title").id
   let th2 = Thought.findByTitle("eli's title").id
 
+  if(store.tags.length < 3){
   return TagsAdapter.create(ct0, th0)
   .then(() => { return TagsAdapter.create(ct1, th1)})
   .then(() => { return TagsAdapter.create(ct3, th2)})
-
+  }
 }
 
 function renderCategoriesAndAddListeners() {
