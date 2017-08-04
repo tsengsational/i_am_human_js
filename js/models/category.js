@@ -91,8 +91,8 @@ function createCategories () {
     chipHTML(){
       return `
       <div class="chip js-category-chip" id="category-${this.id}">
-        <img src="${this.image_url}" class="responsive-img">
-        ${this.name.toUpperCase()}
+        <a href="#"><img src="${this.image_url}" class="responsive-img">
+        ${this.name.toUpperCase()}</a>
       </div>
       `
     }

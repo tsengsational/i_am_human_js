@@ -81,7 +81,10 @@ function createThoughts() {
           <div class="card-content">
             <span class="card-title black-text">${this.title}</span>   by   <span class="grey-text">${username}</span>
             <div class="row"> </div>
-              <p class="">${this.content}</p>
+            <div class="views-likes grey-text">
+                <span class="views-here">Views: ${this.views}</span>  |  <span class="likes-here">Likes: ${this.likes}</span>
+            </div>
+              <p class="thought-content" id="thought-content">${this.content}</p>
 
             <div class="get-thought-id" id="thoughtID-${this.id}"> </div>
             <div class="fixed-action-btn horizontal" style="position:relative; float:right; bottom:35px; right:10px">
@@ -95,31 +98,37 @@ function createThoughts() {
                 <li><a class="btn-floating blue js-comment-button"><i class="material-icons">mode_comment</i></a></li>
               </ul>
             </div>
+            <div class="row">
             <div class="">${uniq}</div>
-            <div class="views-likes">
-                <span>Views: ${this.views}</span>
-                <span>Likes: ${this.likes}</span>
             </div>
           </div>
         </div>
-        <div class="create-comments-here">
-          <div class="card">
+<br>
+          <div class="create-comments-here">
+            <div class="card-panel" style="bottom-margin: 50px;">
 
+                <br>
+                <span class="card-title">Add Comment</span>
+                <form class="comment-form">
+                <div class="input-field">
+                  <label for="comment[content]">Content:</label>
+                  <input type="text" name="comment[content]" id="comment-content"></input>
+                </div>
+                  <br>
+                <div class="input-field">
+                  <label class="active" for="comment[username]">Username:</label>
+                  <input type="text" name="comment[username]" value="Anonymous" id="comment-user"></input>
+                </div>
+                  <br>
+                  <input type="submit" value="add comment" </input>
+                </form>
+              </div>
               <br>
-              <p> add comment </p>
-              <form class="comment-form">
-                <label for="comment[content]">Content:</label>
-                <input type="text" name="comment[content]" id="comment-content"></input>
-                <br>
-                <label for="comment[username]">Username:</label>
-                <input type="text-field" name="comment[username]" value="Anonymous" id="comment-user"></input>
-                <br>
-                <input type="submit" value="add comment" </input>
-              </form>
+              <h3>Comments:</h3>
+              <div class="comments-here"></div>
+              <br>
             </div>
-            <div class="comments-here"></div>
           </div>
-        </div>
       </div>
       `
     };

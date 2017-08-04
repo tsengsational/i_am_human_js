@@ -19,7 +19,11 @@ function createComments () {
     commentHTML(){
       let user = User.find(this.user_id)
       return `
-      <p>${user.username}: ${this.content} </p>
+      <div class="card">
+        <div class="card-content">
+          <p>${user.username}: ${this.content} </p>
+        </div>
+      </div>
       `
     }
 

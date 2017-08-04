@@ -42,6 +42,7 @@ class CategoriesController {
 // LISTENERS
     static addListenertoCategoryChip(){
       $('.js-category-chip').on('click', function(event){
+        event.preventDefault()
         let id = parseInt(this.id.split('-')[1])
         let category = Category.find(id)
         CategoriesController.renderSingleCategory(category)
