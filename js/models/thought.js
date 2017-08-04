@@ -144,7 +144,7 @@ function createThoughts() {
     };
 
     categories(){
-      let categoriesTags = store.tags.filter(tag => {return tag.thought_id = this.id})
+      let categoriesTags = store.tags.filter(tag => {return tag.thought_id === this.id})
       return categoriesTags.map(tag =>{return Category.find(parseInt(tag.category_id))})
     };
 
