@@ -100,7 +100,7 @@ function createThoughts() {
           <p> add comment </p>
           <form class="comment-form">
             <label for="comment[username]">Username:</label>
-            <input type="text-field" name="comment[username]" id="comment-user"></input>
+            <input type="text-field" name="comment[username]" value="Anonymous" id="comment-user"></input>
             <br>
             <label for="comment[content]">Content:</label>
             <input type="text" name="comment[content]" id="comment-content"></input>

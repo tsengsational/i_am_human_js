@@ -26,18 +26,19 @@ function createThoughtsController(){
         let thought = Thought.find(id)
         clearPage()
         render(thought.thoughtsHTML(), '.thought-here').hide().fadeIn()
+        ThoughtsController.addListenerToLike()
         let html = thought.comments().map(comment => {
           return comment.commentHTML()
         }).join('')
-        debugger
         render(html, '.comments-here')
+        thought.addView()
         CommentsController.addListenerToCommentForm()
       })
     }
 
     static addListenerToLike(){
       $('.js-like-button').on('click', () => {
-        let thought = Thought.find(parseInt(event.target.id))
+        let thought = Thought.find(parseInt($('.js-like-button')[0].id))
         thought.addLikes()
       })
     }
@@ -46,12 +47,12 @@ function createThoughtsController(){
 
     }
 
-    static addListenderToThoughtView(){
-      $('body').on('click', 'js-thought-view', function(event){
-        let thought = Thought.find(parseInt(event.target.id))
-        thought.addView()
-      })
-    }
+    // static addListenderToThoughtView(){
+    //   $('body').on('click', 'js-thought-view', function(event){
+    //     let thought = Thought.find(parseInt(event.target.id))
+    //     thought.addView()
+    //   })
+    // }
 
 
 
@@ -83,6 +84,7 @@ function createThoughtsController(){
     static renderNewThought(thoughtData){
       let newThought = Thought.createFromApi(thoughtData)
       render(newThought.thoughtsHTML(), ".thought-here")
+
       CommentsController.addListenerToCommentForm()
       ThoughtsController.addListenerToLike()
     }
