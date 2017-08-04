@@ -88,6 +88,15 @@ function createCategories () {
       `
     }
 
+    chipHTML(){
+      return `
+      <div class="chip js-category-chip" id="category-${this.id}">
+        <img src="${this.image_url}" class="responsive-img">
+        ${this.name.toUpperCase()}
+      </div>
+      `
+    }
+
     pluralize(){
       if(this.numThoughts() > 1){
         return 'Thoughts'

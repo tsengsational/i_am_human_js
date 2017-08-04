@@ -1,12 +1,19 @@
 function createThoughtsController(){
   return class {
+// RENDERS
+  static renderThought(thought){
+    render(thought.thoughtsHTML(), ".thought-here").hide().fadeIn()
+    ThoughtsController.addListenerToLike()
+    CategoriesController.addListenertoCategoryChip()
+    CommentsController.renderComments(thought)
+    CommentsController.addListenerToCommentForm()
+};
 
+// LISTENERS
     static addListenerToSubmit(){
       $('.create-thought').submit(() => {
         event.preventDefault()
         this.createFromForm()
-
-
       })
     }
 
@@ -25,15 +32,8 @@ function createThoughtsController(){
         let id = parseInt(event.target.id.split('-')[1])
         let thought = Thought.find(id)
         clearPage()
-        render(thought.thoughtsHTML(), '.thought-here').hide().fadeIn()
-        ThoughtsController.addListenerToLike()
-        ThoughtsController.addListenerToDelete()
-        let html = thought.comments().map(comment => {
-          return comment.commentHTML()
-        }).join('')
-        render(html, '.comments-here')
-        thought.addView()
-        CommentsController.addListenerToCommentForm()
+        ThoughtsController.renderThought(thought)
+
       })
     }
 
@@ -42,6 +42,7 @@ function createThoughtsController(){
         let thought = Thought.find(parseInt($('.js-like-button')[0].id))
         thought.addLikes()
       })
+      console.log('listening to like')
     }
 
     static addListenerToDelete(){
@@ -63,9 +64,6 @@ function createThoughtsController(){
     //     thought.addView()
     //   })
     // }
-
-
-
 
     static createFromForm(){
       let selectCategories = [...$('#category-selector option:selected')]
@@ -91,15 +89,6 @@ function createThoughtsController(){
       .then(this.renderNewThought)
     }
 
-    static renderNewThought(thoughtData){
-      let newThought = Thought.createFromApi(thoughtData)
-      render(newThought.thoughtsHTML(), ".thought-here")
-
-      CommentsController.addListenerToCommentForm()
-      ThoughtsController.addListenerToLike()
-      ThoughtsController.addListenerToDelete()
-    }
-
 
     static usersThoughtsHTML(allUsersThoughts){
           let html = ""
@@ -108,7 +97,9 @@ function createThoughtsController(){
           })
           $('.form-here').empty()
         render(html, ".thoughts-here")
-    }
+    };
+
+
 
   }
 }

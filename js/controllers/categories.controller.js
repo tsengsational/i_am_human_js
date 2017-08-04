@@ -1,5 +1,6 @@
 class CategoriesController {
 
+// RENDERS
     static renderCategories(){
       clearPage()
       let start = '<div class="row">'
@@ -19,6 +20,35 @@ class CategoriesController {
       CategoriesController.addListenerForForm()
     }
 
+    static renderForm() {
+      render(Category.formTemplate(), $('.form-here')).hide().slideDown('medium')
+      CategoriesController.addListenerForSubmit()
+    }
+
+    static renderSingleCategory(category){
+      clearPage()
+      render(category.singleCategoryTemplate(), '.categories-here').hide().fadeIn()
+      let tags = store.tags.filter(tag => {return tag.category_id = category.id})
+      let thoughtsLinks = tags.map(tag => {
+        let thoughtID = parseInt(tag.thought_id)
+        let thought = Thought.find(thoughtID)
+        return thought.linkHTML()
+      }).join('<br>')
+      // render onto this category thoughts space
+      render(thoughtsLinks, ".thoughts-here").hide().fadeIn()
+      ThoughtsController.addListenertoThoughtLink()
+    }
+
+// LISTENERS
+    static addListenertoCategoryChip(){
+      $('.js-category-chip').on('click', function(event){
+        let id = parseInt(this.id.split('-')[1])
+        let category = Category.find(id)
+        CategoriesController.renderSingleCategory(category)
+      })
+      console.log("listening to Category Chips")
+    }
+
     static addListenerForCategory(selector, eventType){
       $(selector).on(eventType, function(){
         CategoriesController.renderCategories()
@@ -36,23 +66,12 @@ class CategoriesController {
       $('body').on('click', '.js-single-category', event => {
         let categoryID = $(event.target).parents('a')[0].id.split('-')[1]
         let category = Category.find(parseInt(categoryID))
-        // debugger
         clearPage()
-        render(category.singleCategoryTemplate(), '.categories-here').hide().fadeIn()
-        // call method that makes ajax request to get all thoughts of this category and return it then render the return value
-        let thoughts = CategoriesAdapter.categoriesThoughts(category)
-        // debugger
-        console.log(thoughts)
-        // render onto this category thoughts space
-
+        CategoriesController.renderSingleCategory(category)
+        // let thoughts = CategoriesAdapter.categoriesThoughts(category)
 
       })
-    }
-
-    static renderForm() {
-      render(Category.formTemplate(), $('.form-here')).hide().slideDown('medium')
-      CategoriesController.addListenerForSubmit()
-    }
+    };
 
     static addListenerForSubmit() {
       $('.create-category').submit(() => {
@@ -72,9 +91,5 @@ class CategoriesController {
       CategoriesAdapter.create(name, image_url)
       .then(CategoriesController.renderCategories)
     }
-
-
-
-
 
   }

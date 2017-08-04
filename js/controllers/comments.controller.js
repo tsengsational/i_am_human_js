@@ -1,6 +1,12 @@
 function createCommentsController(){
   return class {
 
+    static renderComments(thought){
+    let html = thought.comments().map(comment => {
+      return comment.commentHTML()
+    }).join('')
+    render(html, '.comments-here')
+    }
 
     static addListenerToCommentForm(){
       $('.comment-form').submit(() => {
