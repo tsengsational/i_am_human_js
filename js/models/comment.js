@@ -27,6 +27,36 @@ function createComments () {
       `
     }
 
+    static formTemplate() {
+      return `<div class="create-comments-here">
+        <div class="card-panel" style="bottom-margin: 50px;">
+
+            <br>
+            <span class="card-title">Add Comment</span>
+            <form class="comment-form">
+            <div class="input-field">
+              <label for="comment[content]">Content:</label>
+              <input type="text" name="comment[content]" id="comment-content"></input>
+            </div>
+              <br>
+            <div class="input-field">
+              <label class="active" for="comment[username]">Username:</label>
+              <input type="text" name="comment[username]" value="Anonymous" id="comment-user"></input>
+            </div>
+              <br>
+              <input type="submit" value="add comment" </input>
+            </form>
+          </div>
+          <br>
+          <h3>Comments:</h3>
+          <div class="comments-here"></div>
+          <br>
+        </div>
+      </div>
+  </div>
+  `
+    }
+
     static createFromApi(commentData) {
       if(commentData.id == null) {
         console.log(commentData)
