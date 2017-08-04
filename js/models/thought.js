@@ -105,19 +105,22 @@ function createThoughts() {
           </div>
         </div>
         <div class="create-comments-here">
-          <br>
-          <p> add comment </p>
-          <form class="comment-form">
-            <label for="comment[content]">Content:</label>
-            <input type="text" name="comment[content]" id="comment-content"></input>
-            <br>
-            <label for="comment[username]">Username:</label>
-            <input type="text-field" name="comment[username]" value="Anonymous" id="comment-user"></input>
-            <br>
-            <input type="submit" value="add comment" </input>
-          </form>
-        </div>
-        <div class="comments-here"></div>
+          <div class="card">
+
+              <br>
+              <p> add comment </p>
+              <form class="comment-form">
+                <label for="comment[content]">Content:</label>
+                <input type="text" name="comment[content]" id="comment-content"></input>
+                <br>
+                <label for="comment[username]">Username:</label>
+                <input type="text-field" name="comment[username]" value="Anonymous" id="comment-user"></input>
+                <br>
+                <input type="submit" value="add comment" </input>
+              </form>
+            </div>
+            <div class="comments-here"></div>
+          </div>
         </div>
       </div>
       `
