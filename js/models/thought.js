@@ -53,8 +53,7 @@ function createThoughts() {
                 <div class="input-field"><input type="text" name="thought[content]" id="content">
                   <label for="thought[content]">Content</label>
                 </div>
-                <div class="input-field"><input type="text" name="thought[username]" id="username">
-                  <label for="thought[username]">Username</label>
+                <div class="input-field"><input type="text" value="Anonymous" name="thought[username]" id="username">
                 </div>
                 <div class="input-field">
                   <select multiple class="js-select-categories" id="category-selector">
@@ -99,11 +98,11 @@ function createThoughts() {
           <br>
           <p> add comment </p>
           <form class="comment-form">
-            <label for="comment[username]">Username:</label>
-            <input type="text-field" name="comment[username]" id="comment-user"></input>
-            <br>
             <label for="comment[content]">Content:</label>
             <input type="text" name="comment[content]" id="comment-content"></input>
+            <br>
+            <label for="comment[username]">Username:</label>
+            <input type="text-field" name="comment[username]" value="Anonymous" id="comment-user"></input>
             <br>
             <input type="submit" value="add comment" </input>
           </form>
