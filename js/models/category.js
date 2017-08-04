@@ -49,7 +49,7 @@ function createCategories () {
 
     static formTemplate() {
       return `
-        <div class="row"><div class="card-panel"><h3>Create a Category</h3>
+        <div class="container"><div class="row" style="margin-bottom: 20px;"><div class="card-panel"><h3>Create a Category</h3>
         <form class="create-category" action="index.html" method="post">
           <div class="input-field">
           <label for="category[name]">Name</label>
@@ -60,7 +60,7 @@ function createCategories () {
           <label for="category[image_url]">Image URL</label>
           <input type="text" name="category[image_url]" id="image-url"></div>
           <input class="btn indigo white-text waves-effect waves-light" type="submit" value="submit">
-        </form></div></div>
+        </form></div></div></div>
         `
     }
 

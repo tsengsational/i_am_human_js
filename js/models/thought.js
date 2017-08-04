@@ -43,22 +43,29 @@ function createThoughts() {
       }).join(' ')
       start += catArr
       return `
-        <div class="row"><div class="card-panel"><h3>Create a Thought</h3>
-        <form class="create-thought" action="index.html" method="post">
-          <div class="input-field"><input type="text" name="thought[title]"  id="title">
-          <label for="thought[title]">Title</label>
+        <div class="container">
+          <div class="row" style="margin-bottom: 20px;">
+            <div class="card-panel"><h3>Create a Thought</h3>
+              <form class="create-thought" action="index.html" method="post">
+                <div class="input-field"><input type="text" name="thought[title]"  id="title">
+                  <label for="thought[title]">Title</label>
+                </div>
+                <div class="input-field"><input type="text" name="thought[content]" id="content">
+                  <label for="thought[content]">Content</label>
+                </div>
+                <div class="input-field"><input type="text" name="thought[username]" id="username">
+                  <label for="thought[username]">Username</label>
+                </div>
+                <div class="input-field">
+                  <select multiple class="js-select-categories" id="category-selector">
+                    ${start}
+                  </select>
+                </div>
+                <input class="btn indigo white-text waves-effect waves-light" type="submit" value="submit">
+              </form>
+            </div>
           </div>
-          <div class="input-field"><input type="text" name="thought[content]" id="content">
-          <label for="thought[content]">Content</label></div>
-          <div class="input-field"><input type="text" name="thought[username]" id="username">
-          <label for="thought[username]">Username</label></div>
-          <div class="input-field">
-          <select multiple class="js-select-categories" id="category-selector">
-          ${start}
-          </select>
-          </div>
-          <input class="btn indigo white-text waves-effect waves-light" type="submit" value="submit">
-        </form></div></div>
+        </div>
         `
     }
 
