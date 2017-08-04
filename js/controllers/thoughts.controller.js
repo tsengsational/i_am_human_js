@@ -24,7 +24,7 @@ function createThoughtsController(){
         let id = parseInt(event.target.id.split('-')[1])
         let thought = Thought.find(id)
         clearPage()
-        render(thought.thoughtsHTML(), '.thought-here')
+        render(thought.thoughtsHTML(), '.thought-here').hide().fadeIn()
         CommentsController.addListenerToCommentForm()
       })
     }

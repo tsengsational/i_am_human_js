@@ -5,6 +5,7 @@ class ThoughtsAdapter {
         ThoughtsAdapter.saveToStore(thought)
       })
     })
+    console.log(store)
   };
 
   static create(title, content, user_id, selectCategories) {

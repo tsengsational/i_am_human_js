@@ -38,7 +38,7 @@ class CategoriesController {
         let category = Category.find(parseInt(categoryID))
         // debugger
         clearPage()
-        render(category.singleCategoryTemplate(), '.categories-here')
+        render(category.singleCategoryTemplate(), '.categories-here').hide().fadeIn()
         // call method that makes ajax request to get all thoughts of this category and return it then render the return value
         let thoughts = CategoriesAdapter.categoriesThoughts(category)
         // debugger

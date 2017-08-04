@@ -10,6 +10,40 @@ Support: http://nk.ticksy.com
 License: You must have a valid license purchased only from ThemeForest (the above link) in order to legally use the theme for your project.
 Copyright 2016.
 -->
+<div class="card-panel">
+  <div class="card-content">
+    <span class="card-title">${this.title}</span>
+    <p class="flow-text">${this.content}</p>
+    <div class="get-thought-id" id="thoughtID-${this.id}"> </div>
+    <div class="fixed-action-btn horizontal" style="position:relative; float:right; bottom:35px; right:10px">
+      <a class="btn-floating btn-large ${thisColor}">
+        <i class="large material-icons">more_horiz</i>
+      </a>
+      <ul>
+        <li><a class="btn-floating red js-like-button" id="${this.id}"><i class="material-icons">thumb_up</i></a></li>
+        <li><a class="btn-floating yellow darken-1 js-delete-thought-button" id="${this.id}"><i class="material-icons">delete</i></a></li>
+        <li><a class="btn-floating green js-edit-thought-button" id="${this.id}"><i class="material-icons">mode_edit</i></a></li>
+        <li><a class="btn-floating blue js-comment-button"><i class="material-icons">mode_comment</i></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="create-comments-here">
+  <br>
+  <p> add comment </p>
+  <form class="comment-form">
+    <label for="comment[username]">Username:</label>
+    <input type="text-field" name="comment[username]" id="comment-user"></input>
+    <br>
+    <label for="comment[content]">Content:</label>
+    <input type="text" name="comment[content]" id="comment-content"></input>
+    <br>
+    <input type="submit" value="add comment" </input>
+  </form>
+</div>
+<div class="comments-here"></div>
+</div>
+
 
 <html lang="en">
 
@@ -115,7 +149,7 @@ Options:
       </li>
       <li class="user">
         <a class="dropdown-button" data-activates="user-dropdown" href="#!">
-           Account <i class="fa fa-bars right"></i>
+          Account <i class="fa fa-bars right"></i>
         </a>
 
         <ul id="user-dropdown" class="dropdown-content flow-text">
@@ -248,10 +282,10 @@ Effects [you can use one of these classnames]:
 
   </div>
   <!-- /Breadcrumb -->
-<div class="row">
-  <div class="form-here">
+  <div class="row">
+    <div class="form-here">
+    </div>
   </div>
-</div>
   <!-- Stats Panels -->
   <div class="row">
     <div class="col l4 s12">
@@ -521,23 +555,23 @@ Chat
 </div>
 <!-- /Chat -->
 <footer>&copy; 2015
- All rights reserved. </footer>
+  All rights reserved. </footer>
 
 
- <script
- src="http://code.jquery.com/jquery-3.2.1.js"
- integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
- crossorigin="anonymous"></script>
- <script type="text/javascript" src="js/index.js"></script>
- <script type="text/javascript" src="js/models/thought.js"></script>
- <script type="text/javascript" src="js/models/category.js"></script>
- <script type="text/javascript" src="js/models/tag.js"></script>
- <script type="text/javascript" src="js/models/user.js"></script>
- <script type="text/javascript" src="js/models/comment.js"></script>
- <script type="text/javascript" src="js/seed.js"></script>
+  <script
+  src="http://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript" src="js/models/thought.js"></script>
+  <script type="text/javascript" src="js/models/category.js"></script>
+  <script type="text/javascript" src="js/models/tag.js"></script>
+  <script type="text/javascript" src="js/models/user.js"></script>
+  <script type="text/javascript" src="js/models/comment.js"></script>
+  <script type="text/javascript" src="js/seed.js"></script>
 
- <script type="text/javascript" src="js/controllers/categories.controller.js"></script>
- <script type="text/javascript" src="js/controllers/comments.controller.js"></script><script type="text/javascript" src="js/controllers/tags.controller.js"></script><script type="text/javascript" src="js/controllers/thoughts.controller.js"></script><script type="text/javascript" src="js/controllers/users.controller.js"></script>
+  <script type="text/javascript" src="js/controllers/categories.controller.js"></script>
+  <script type="text/javascript" src="js/controllers/comments.controller.js"></script><script type="text/javascript" src="js/controllers/tags.controller.js"></script><script type="text/javascript" src="js/controllers/thoughts.controller.js"></script><script type="text/javascript" src="js/controllers/users.controller.js"></script>
 
   <!-- jQuery RAF (improved animation performance) -->
   <script type="text/javascript" src="public/js/jquery.requestAnimationFrame.min.js"></script>
@@ -558,6 +592,6 @@ Chat
   <script type="text/javascript" src="public/js/prettify.js"></script>
 
 
-  </body>
+</body>
 
-  </html>
+</html>

@@ -6,6 +6,7 @@ class CategoriesAdapter {
         CategoriesAdapter.saveToStore(category)
       })
     })
+    console.log(store)
   }
 
 
@@ -17,7 +18,7 @@ class CategoriesAdapter {
         let foundThought = Thought.find(thought.id)
         return foundThought.linkHTML()
       }).join(" ");
-      render(thoughtLinks, ".thoughts-here")
+      render(thoughtLinks, ".thoughts-here").hide().fadeIn()
       ThoughtsController.addListenertoThoughtLink()
     })
   }

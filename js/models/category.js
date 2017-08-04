@@ -1,7 +1,5 @@
 function createCategories () {
 
-  let colors = ['red', 'pink', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan', 'teal', 'green', 'light-green', 'lime', 'yellow', 'amber', 'orange', 'deep-orange']
-
 
   return class {
 
@@ -35,7 +33,7 @@ function createCategories () {
     template(){
       let thisColor = colors[Math.floor(Math.random() * colors.length)];
       return`<div class="col s12 l4">
-      <a href="#" class="card ${thisColor} waves-effect waves-light lighten-2 ${thisColor}-text text-lighten-5 js-single-category" style="border-radius: 75%;"  id="category-${this.id}">
+      <a href="#" class="card ${thisColor} waves-effect waves-light lighten-2 ${thisColor}-text text-lighten-5 js-single-category" style="border-radius: 50%;"  id="category-${this.id}">
       <div class="card-image">
       <img src="${this.image_url}" alt="">
       </div>
@@ -51,7 +49,7 @@ function createCategories () {
 
     static formTemplate() {
       return `
-        <div class="row" style="margin-bottom: 20px;"><div class="card-panel"><h3>Create a Category</h3>
+        <div class="row"><div class="card-panel"><h3>Create a Category</h3>
         <form class="create-category" action="index.html" method="post">
           <div class="input-field">
           <label for="category[name]">Name</label>
@@ -67,18 +65,24 @@ function createCategories () {
     }
 
     singleCategoryTemplate(){
+      let thisColor = colors[Math.floor(Math.random() * colors.length)];
       return `
       <div class="row">
-          <div class="col s12 m6 l6">
-            <img src="${this.image_url}" class="responsive-img" style="border-radius: 50%;">
+          <div class="col s12 m4 l4">
+            <a href="#" class="card ${thisColor} waves-effect waves-light lighten-2 ${thisColor}-text text-lighten-5 js-single-category" style="border-radius: 75%;"  id="category-${this.id}">
+            <div class="card-image">
+            <img src="${this.image_url}" alt="">
+            </div>
+            <div class="card-content">
+            <div class="card-title flow-text" style="text-align: center;"><h2>${this.name.toUpperCase()}</h2></div>
+            <div class="" style="text-align: center;">${this.numThoughts()} ${this.pluralize()}</div>
+            </div>
+            </a>
           </div>
-          <div class="col s12 m6 l6">
-            <h1>${this.name}</h1>
+          <div class="col s12 m8 l8">
+            <h1>Thoughts</h1>
+            <div class="thoughts-here flow-text"></div>
           </div>
-      </div>
-      <div class="row">
-        <div class="thoughts-here">
-        </div>
       </div>
       `
     }
