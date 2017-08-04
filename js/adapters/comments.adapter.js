@@ -23,11 +23,11 @@ class CommentsAdapter {
         let thought = Thought.find(comment.thought_id)
          html = thought.comments().map(comment => {
           return comment.commentHTML()
-        })
+        }).join('')
         // debugger
-        $('.comments-here').empty()
-        $('.comments-here').append(html)
-        // render(html, ".comments-here")
+        // $('.comments-here').empty()
+        // $('.comments-here').append(html)
+        render(html, ".comments-here")
       });
   }
 
