@@ -1,12 +1,19 @@
 function createThoughtsController(){
   return class {
+// RENDERS
+  static renderThought(thought){
+    render(thought.thoughtsHTML(), ".thought-here").hide().fadeIn()
+    ThoughtsController.addListenerToLike()
+    CategoriesController.addListenertoCategoryChip()
+    CommentsController.renderComments(thought)
+    CommentsController.addListenerToCommentForm()
+};
 
+// LISTENERS
     static addListenerToSubmit(){
       $('.create-thought').submit(() => {
         event.preventDefault()
         this.createFromForm()
-
-
       })
     }
 
@@ -25,13 +32,7 @@ function createThoughtsController(){
         let id = parseInt(event.target.id.split('-')[1])
         let thought = Thought.find(id)
         clearPage()
-        render(thought.thoughtsHTML(), '.thought-here').hide().fadeIn()
-        let html = thought.comments().map(comment => {
-          return comment.commentHTML()
-        }).join('')
-        debugger
-        render(html, '.comments-here')
-        CommentsController.addListenerToCommentForm()
+        ThoughtsController.renderThought(thought)
       })
     }
 
@@ -40,6 +41,7 @@ function createThoughtsController(){
         let thought = Thought.find(parseInt(event.target.id))
         thought.addLikes()
       })
+      console.log('listening to like')
     }
 
     static addListenerToEdit(){
@@ -52,9 +54,6 @@ function createThoughtsController(){
         thought.addView()
       })
     }
-
-
-
 
     static createFromForm(){
       let selectCategories = [...$('#category-selector option:selected')]
@@ -79,14 +78,6 @@ function createThoughtsController(){
       ThoughtsAdapter.create(title, content, user_id, selectCategories)
     }
 
-    static renderNewThought(thoughtData){
-      let newThought = Thought.createFromApi(thoughtData)
-
-      render(newThought.thoughtsHTML(), ".thought-here")
-      ThoughtsController.addListenerToLike()
-    }
-
-
     static usersThoughtsHTML(allUsersThoughts){
           let html = ""
           allUsersThoughts.forEach((thought) => {
@@ -94,7 +85,9 @@ function createThoughtsController(){
           })
           $('.form-here').empty()
         render(html, ".thoughts-here")
-    }
+    };
+
+
 
   }
 }

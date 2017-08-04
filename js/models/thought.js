@@ -9,7 +9,7 @@ function createThoughts() {
       this.views = 0
       this.id = id
       store.thoughts.push(this)
-    }
+    };
 
     static find(id){
       return store.thoughts.find((thought) => {
@@ -21,19 +21,17 @@ function createThoughts() {
       return store.thoughts.find((thought) => {
         return thought.title == title
       })
-    }
+    };
 
     addLikes(){
       this.likes++
       ThoughtsAdapter.update(this)
-    }
+    };
 
     addView(){
       this.views++
       ThoughtsAdapter.update(this)
-    }
-
-
+    };
 
     static formTemplate(){
       let categories = store.categories
@@ -67,20 +65,25 @@ function createThoughts() {
           </div>
         </div>
         `
-    }
+    };
 
     linkHTML(){
       return `<a href="#" class="js-thought-view" id="thought-${this.id}">${this.title}</a>`
-    }
+    };
 
     thoughtsHTML(){
       let thisColor = colors[Math.floor(Math.random() * colors.length)];
+      let categoryChips = this.categories().map(category => {return category.chipHTML()})
+      debugger
+      let uniq = categoryChips.filter(ApplicationController.onlyUnique).join(' ')
       return `
       <div class="container">
-        <div class="card-panel">
+        <div class="card">
           <div class="card-content">
-            <span class="card-title">${this.title}</span>
-            <p class="flow-text">${this.content}</p>
+            <div class="card-title black-text">${this.title}</div>
+
+              <p class="">${this.content}</p>
+
             <div class="get-thought-id" id="thoughtID-${this.id}"> </div>
             <div class="fixed-action-btn horizontal" style="position:relative; float:right; bottom:35px; right:10px">
               <a class="btn-floating btn-large ${thisColor}">
@@ -93,6 +96,7 @@ function createThoughts() {
                 <li><a class="btn-floating blue js-comment-button"><i class="material-icons">mode_comment</i></a></li>
               </ul>
             </div>
+            <div class="">${uniq}</div>
           </div>
         </div>
         <div class="create-comments-here">
@@ -112,25 +116,30 @@ function createThoughts() {
         </div>
       </div>
       `
-    }
+    };
 
     comments(){
       return store.comments.filter((comment) => {
         return comment.thought_id === this.id
       })
-    }
+    };
 
     static createFromApi(thoughtData){
       if(thoughtData.id == null) {
         throw new Error('Unable to create thought')
       }
       return new Thought(thoughtData.title, thoughtData.content, thoughtData.user_id, thoughtData.id)
-    }
+    };
 
     removeFromStore() {
       let idx = store.thoughts.indexOf(this)
       store.thoughts.splice(idx, 1)
-    }
+    };
+
+    categories(){
+      let categoriesTags = store.tags.filter(tag => {return tag.thought_id = this.id})
+      return categoriesTags.map(tag =>{return Category.find(parseInt(tag.category_id))})
+    };
 
   };
 };
