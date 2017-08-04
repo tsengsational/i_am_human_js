@@ -18,7 +18,9 @@ class ThoughtsAdapter {
         title: title,
         content: content,
         user_id: user_id,
-        tags: categoryArray
+        tags: categoryArray,
+        likes: 0,
+        views: 0
         }}),
         method: 'POST',
         headers:{"Content-Type": "application/json"}})
