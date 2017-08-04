@@ -28,7 +28,7 @@ class CategoriesController {
     static renderSingleCategory(category){
       clearPage()
       render(category.singleCategoryTemplate(), '.categories-here').hide().fadeIn()
-      let tags = store.tags.filter(tag => {return tag.category_id = category.id})
+      let tags = store.tags.filter(tag => {return tag.category_id === category.id})
       let thoughtsLinks = tags.map(tag => {
         let thoughtID = parseInt(tag.thought_id)
         let thought = Thought.find(thoughtID)
