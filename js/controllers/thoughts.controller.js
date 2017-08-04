@@ -27,6 +27,7 @@ function createThoughtsController(){
         clearPage()
         render(thought.thoughtsHTML(), '.thought-here').hide().fadeIn()
         ThoughtsController.addListenerToLike()
+        ThoughtsController.addListenerToDelete()
         let html = thought.comments().map(comment => {
           return comment.commentHTML()
         }).join('')
@@ -40,6 +41,15 @@ function createThoughtsController(){
       $('.js-like-button').on('click', () => {
         let thought = Thought.find(parseInt($('.js-like-button')[0].id))
         thought.addLikes()
+      })
+    }
+
+    static addListenerToDelete(){
+      $('.js-delete-thought-button').on('click', ()=> {
+        let id = parseInt($('.js-delete-thought-button')[0].id)
+        ThoughtsAdapter.destroy(id)
+        alert("Thought Destroyed")
+        CategoriesController.renderCategories()
       })
     }
 
@@ -87,6 +97,7 @@ function createThoughtsController(){
 
       CommentsController.addListenerToCommentForm()
       ThoughtsController.addListenerToLike()
+      ThoughtsController.addListenerToDelete()
     }
 
 
