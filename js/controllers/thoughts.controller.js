@@ -21,10 +21,16 @@ function createThoughtsController(){
 
     static addListenertoThoughtLink(){
       $('.js-thought-view').on('click', event => {
+        event.preventDefault()
         let id = parseInt(event.target.id.split('-')[1])
         let thought = Thought.find(id)
         clearPage()
         render(thought.thoughtsHTML(), '.thought-here').hide().fadeIn()
+        let html = thought.comments().map(comment => {
+          return comment.commentHTML()
+        }).join('')
+        debugger
+        render(html, '.comments-here')
         CommentsController.addListenerToCommentForm()
       })
     }

@@ -70,7 +70,7 @@ function createThoughts() {
     }
 
     linkHTML(){
-      return `<a class="js-thought-view" id="thought-${this.id}">${this.title}</a>`
+      return `<a href="#" class="js-thought-view" id="thought-${this.id}">${this.title}</a>`
     }
 
     thoughtsHTML(){

@@ -56,6 +56,7 @@ function seedTags() {
 UsersAdapter.index()
 .then(ThoughtsAdapter.index)
 .then(CategoriesAdapter.index)
+.then(CommentsAdapter.index)
 .then(seedUsers)
 .then(seedCategories)
 .then(seedThoughts)
