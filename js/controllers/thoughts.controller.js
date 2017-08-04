@@ -71,6 +71,7 @@ function createThoughtsController(){
       }
       $('.form-here').empty()
       ThoughtsAdapter.create(title, content, user_id, selectCategories)
+      .then(this.renderNewThought)
     }
 
     static renderNewThought(thoughtData){

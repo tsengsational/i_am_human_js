@@ -28,6 +28,7 @@ class ThoughtsAdapter {
           response.tags.forEach(tag => {
             Tag.createFromApi(tag)
           })
+          return newThought
         })
 
         // .then(response => {return response.json()})
