@@ -122,7 +122,8 @@ function createThoughts() {
 
     static createFromApi(thoughtData){
       if(thoughtData.id == null) {
-        throw new Error('Unable to create thought')
+        console.log(thoughtData)
+        console.warn('Unable to create thought')
       }
       return new Thought(thoughtData.title, thoughtData.content, thoughtData.user_id, thoughtData.id)
     }

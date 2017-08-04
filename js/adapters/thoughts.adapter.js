@@ -24,6 +24,10 @@ class ThoughtsAdapter {
         headers:{"Content-Type": "application/json"}})
         .then(response => {return response.json()})
         .then(response => {
+          if(response.status === "error") {
+            ApplicationAdapter.handleError(response)
+            return null
+          }
           let newThought = Thought.createFromApi(response.thought)
           response.tags.forEach(tag => {
             Tag.createFromApi(tag)

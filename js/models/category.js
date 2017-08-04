@@ -25,7 +25,8 @@ function createCategories () {
 
     static createFromApi(categoryData) {
       if(categoryData.id == null) {
-        throw new Error('Unable to create category')
+        console.log(categoryData)
+        return null
       }
       return new Category(categoryData.name, categoryData.image_url, categoryData.id)
     }
@@ -88,9 +89,9 @@ function createCategories () {
     }
 
     pluralize(){
-      if(this.numThoughts > 1){
+      if(this.numThoughts() > 1){
         return 'Thoughts'
-      } else if (this.numThoughts === 0){
+      } else if (this.numThoughts() === 0){
         return 'Thoughts'
       } else {
         return 'Thought'
