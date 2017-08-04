@@ -1,7 +1,7 @@
 class CategoriesAdapter {
 
   static index() {
-    $.get(`${BASE_URL}/categories`, (response) => {
+    return $.get(`${BASE_URL}/categories`, (response) => {
       response.forEach((category) => {
         CategoriesAdapter.saveToStore(category)
       })

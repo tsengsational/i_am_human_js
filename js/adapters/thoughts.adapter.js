@@ -18,16 +18,23 @@ class ThoughtsAdapter {
         title: title,
         content: content,
         user_id: user_id,
-        tags: categoryArray
+        tags: categoryArray,
+        likes: 0,
+        views: 0
         }}),
         method: 'POST',
         headers:{"Content-Type": "application/json"}})
         .then(response => {return response.json()})
         .then(response => {
+          if(response.status === "error") {
+            ApplicationAdapter.handleError(response)
+            return null
+          }
           let newThought = Thought.createFromApi(response.thought)
           response.tags.forEach(tag => {
             Tag.createFromApi(tag)
           })
+          return newThought
         })
 
         // .then(response => {return response.json()})
