@@ -73,7 +73,6 @@ function createThoughts() {
     thoughtsHTML(){
       let thisColor = colors[Math.floor(Math.random() * colors.length)];
       let categoryChips = this.categories().map(category => {return category.chipHTML()})
-      debugger
       let uniq = categoryChips.filter(ApplicationController.onlyUnique).join(' ')
       let username = User.find(this.user_id).username
       return `
