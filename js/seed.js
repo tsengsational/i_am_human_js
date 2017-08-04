@@ -1,4 +1,5 @@
 function seedUsers(){
+  console.log('seeding users...')
 
   return User.findOrCreate("Anonymous")
   .then(()=> {return User.findOrCreate("jeremy646")})
@@ -9,6 +10,7 @@ function seedUsers(){
 }
 
 function seedCategories() {
+  console.log('seeding categories...')
 
   return CategoriesAdapter.create("alcohol", "https://www.discoveryplace.info/sites/default/files/alcoholic1.jpg")
   .then(() => {return CategoriesAdapter.create("depression", "http://affinitymagazine.us/wp-content/uploads/2017/04/1468445687-depression.jpg")})
@@ -18,6 +20,7 @@ function seedCategories() {
 }
 
 function seedThoughts() {
+  console.log('seeding thoughts...')
 
   let jeremy_id = User.findByUserName("jeremy646").id
   let eli_id = User.findByUserName("elisings").id
@@ -36,7 +39,7 @@ function seedThoughts() {
 
 
 
-function seedTags() {
+function seedTags() { // currently we do not call this function
 
   let ct0 = Category.findByName("alcohol").id
   let ct1 = Category.findByName("depression").id
@@ -52,7 +55,15 @@ function seedTags() {
 
 }
 
+function renderCategoriesAndAddListeners() {
+  console.log('rendering...')
+  CategoriesController.renderCategories()
+  CategoriesController.addListenerForCategory('#render-categories', 'click')
+  ThoughtsController.addListenerToRenderForm()
+  CategoriesController.addListenertoRenderCategory()
+}
 
+console.log('indexing...')
 UsersAdapter.index()
 .then(ThoughtsAdapter.index)
 .then(CategoriesAdapter.index)
@@ -60,3 +71,4 @@ UsersAdapter.index()
 .then(seedUsers)
 .then(seedCategories)
 .then(seedThoughts)
+.then(renderCategoriesAndAddListeners)

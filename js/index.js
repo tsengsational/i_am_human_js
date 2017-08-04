@@ -7,15 +7,19 @@ $('select').material_select();
 $('.responsive-img').on('click', function(event) {
   event.preventDefault()
 })
+console.log('document ready')
 
-CategoriesController.renderCategories()
-CategoriesController.addListenerForCategory('#render-categories', 'click')
-ThoughtsController.addListenerToRenderForm()
-CategoriesController.addListenertoRenderCategory()
+// below was moved to seed.js
+
+// CategoriesController.renderCategories()
+// CategoriesController.addListenerForCategory('#render-categories', 'click')
+// ThoughtsController.addListenerToRenderForm()
+// CategoriesController.addListenertoRenderCategory()
 
 
 })
 
+console.log('loading index.js')
 function render(html, where) {
   $(where).empty()
   return $(html).appendTo(where)
