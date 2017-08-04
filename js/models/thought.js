@@ -1,12 +1,12 @@
 function createThoughts() {
 
   return class {
-    constructor (title, content, user_id, id) {
+    constructor (title, content, user_id, id, likes, views) {
       this.title = title
       this.content = content
       this.user_id = user_id
-      this.likes = 0
-      this.views = 0
+      this.likes = likes
+      this.views = views
       this.id = id
       store.thoughts.push(this)
     }
@@ -94,6 +94,12 @@ function createThoughts() {
             </div>
           </div>
         </div>
+        <div class="container"
+          <div class="views-likes">
+              <p>Views: ${this.views}</p>
+              <p>Likes: ${this.likes}</p>
+          </div>
+        </div>
         <div class="create-comments-here">
           <br>
           <p> add comment </p>
@@ -124,7 +130,7 @@ function createThoughts() {
         console.log(thoughtData)
         console.warn('Unable to create thought')
       }
-      return new Thought(thoughtData.title, thoughtData.content, thoughtData.user_id, thoughtData.id)
+      return new Thought(thoughtData.title, thoughtData.content, thoughtData.user_id, thoughtData.id, thoughtData.likes, thoughtData.views)
     }
 
     removeFromStore() {
