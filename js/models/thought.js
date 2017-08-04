@@ -75,11 +75,12 @@ function createThoughts() {
       let categoryChips = this.categories().map(category => {return category.chipHTML()})
       debugger
       let uniq = categoryChips.filter(ApplicationController.onlyUnique).join(' ')
+      let username = User.find(this.user_id).username
       return `
       <div class="container">
         <div class="card">
           <div class="card-content">
-            <div class="card-title black-text">${this.title}</div>
+            <span class="card-title black-text">${this.title}</span> by <span class="grey-text">${username}</span>
 
               <p class="">${this.content}</p>
 
