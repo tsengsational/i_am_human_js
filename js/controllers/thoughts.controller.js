@@ -2,14 +2,19 @@ function createThoughtsController(){
   return class {
 // RENDERS
   static renderThought(thought){
-    render(thought.thoughtsHTML(), ".thought-here").hide().fadeIn()
-    ThoughtsController.addListenerToLike()
     thought.addView()
+    render(thought.thoughtHTML(), ".thought-here").hide().fadeIn()
+    ThoughtsController.addListenerToLike()
     CategoriesController.addListenertoCategoryChip()
     CommentsController.renderComments(thought)
     CommentsController.addListenerToCommentForm()
     ThoughtsController.addListenerToDelete()
 };
+
+  static locallyUpdateLikes(thought) {
+    // Increment the likes view but don't wait for the API request to come back
+    $('.likes-here').text(`Likes: ${thought.likes}`)
+  }
 
 // LISTENERS
     static addListenerToSubmit(){
@@ -39,9 +44,10 @@ function createThoughtsController(){
     }
 
     static addListenerToLike(){
-      $('.js-like-button').on('click', () => {
+      $('.js-like-button').one('click', () => {
+        console.log('clicked like')
         let thought = Thought.find(parseInt($('.js-like-button')[0].id))
-        thought.addLikes()
+        thought.addLike()
       })
       console.log('listening to like')
     }
@@ -91,10 +97,10 @@ function createThoughtsController(){
     }
 
 
-    static usersThoughtsHTML(allUsersThoughts){
+    static usersthoughtHTML(allUsersThoughts){
           let html = ""
           allUsersThoughts.forEach((thought) => {
-          html += ThoughtsController.thoughtsHTML(thought)
+          html += ThoughtsController.thoughtHTML(thought)
           })
           $('.form-here').empty()
         render(html, ".thoughts-here")

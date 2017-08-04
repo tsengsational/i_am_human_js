@@ -15,6 +15,9 @@ function createCommentsController(){
         let content = $('#comment-content').val()
         let thought_id = parseInt($('.get-thought-id')[0].id.split('-')[1])
         let thought = Thought.find(thought_id)
+        // clear comment form
+        $('#comment-user').val("Anonymous")
+        $('#comment-content').val("")
         // add comment to database
         CommentsAdapter.create(content, thought_id, user_id)
 

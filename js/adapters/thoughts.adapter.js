@@ -73,7 +73,6 @@ class ThoughtsAdapter {
         thought.user_id = response.user_id;
         thought.likes = response.likes;
         thought.views = response.views;
-        console.log(thought)
       },
     })
   };

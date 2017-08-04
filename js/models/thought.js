@@ -23,9 +23,10 @@ function createThoughts() {
       })
     };
 
-    addLikes(){
+    addLike(){
       this.likes++
-      ThoughtsAdapter.update(this)
+      ThoughtsController.locallyUpdateLikes(this)
+      ThoughtsAdapter.update(this) // Update the database.  No need to wait until done here; user can't click Like multiple times in a row.
     };
 
     addView(){
@@ -70,7 +71,7 @@ function createThoughts() {
       return `<a href="#" class="js-thought-view" id="thought-${this.id}">${this.title}</a>`
     };
 
-    thoughtsHTML(){
+    thoughtHTML(){
       let thisColor = colors[Math.floor(Math.random() * colors.length)];
       let categoryChips = this.categories().map(category => {return category.chipHTML()})
       let uniq = categoryChips.filter(ApplicationController.onlyUnique).join(' ')
@@ -103,34 +104,7 @@ function createThoughts() {
             </div>
           </div>
         </div>
-<br>
-          <div class="create-comments-here">
-            <div class="card-panel" style="bottom-margin: 50px;">
-
-                <br>
-                <span class="card-title">Add Comment</span>
-                <form class="comment-form">
-                <div class="input-field">
-                  <label for="comment[content]">Content:</label>
-                  <input type="text" name="comment[content]" id="comment-content"></input>
-                </div>
-                  <br>
-                <div class="input-field">
-                  <label class="active" for="comment[username]">Username:</label>
-                  <input type="text" name="comment[username]" value="Anonymous" id="comment-user"></input>
-                </div>
-                  <br>
-                  <input type="submit" value="add comment" </input>
-                </form>
-              </div>
-              <br>
-              <h3>Comments:</h3>
-              <div class="comments-here"></div>
-              <br>
-            </div>
-          </div>
-      </div>
-      `
+        <br>  ` + Comment.formTemplate()
     };
 
     comments(){
