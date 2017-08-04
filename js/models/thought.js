@@ -79,8 +79,8 @@ function createThoughts() {
       <div class="container">
         <div class="card">
           <div class="card-content">
-            <span class="card-title black-text">${this.title}</span> by <span class="grey-text">${username}</span>
-
+            <span class="card-title black-text">${this.title}</span>   by   <span class="grey-text">${username}</span>
+            <div class="row"> </div>
               <p class="">${this.content}</p>
 
             <div class="get-thought-id" id="thoughtID-${this.id}"> </div>
@@ -96,12 +96,10 @@ function createThoughts() {
               </ul>
             </div>
             <div class="">${uniq}</div>
-          </div>
-        </div>
-        <div class="container"
-          <div class="views-likes">
-              <p>Views: ${this.views}</p>
-              <p>Likes: ${this.likes}</p>
+            <div class="views-likes">
+                <span>Views: ${this.views}</span>
+                <span>Likes: ${this.likes}</span>
+            </div>
           </div>
         </div>
         <div class="create-comments-here">
