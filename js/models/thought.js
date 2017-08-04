@@ -76,38 +76,40 @@ function createThoughts() {
     thoughtsHTML(){
       let thisColor = colors[Math.floor(Math.random() * colors.length)];
       return `
-      <div class="card-panel">
-        <div class="card-content">
-          <span class="card-title">${this.title}</span>
-          <p class="flow-text">${this.content}</p>
-          <div class="get-thought-id" id="thoughtID-${this.id}"> </div>
-          <div class="fixed-action-btn horizontal" style="position:relative; float:right; bottom:35px; right:10px">
-            <a class="btn-floating btn-large ${thisColor}">
-              <i class="large material-icons">more_horiz</i>
-            </a>
-            <ul>
-              <li><a class="btn-floating red js-like-button" id="${this.id}"><i class="material-icons">thumb_up</i></a></li>
-              <li><a class="btn-floating yellow darken-1 js-delete-thought-button" id="${this.id}"><i class="material-icons">delete</i></a></li>
-              <li><a class="btn-floating green js-edit-thought-button" id="${this.id}"><i class="material-icons">mode_edit</i></a></li>
-              <li><a class="btn-floating blue js-comment-button"><i class="material-icons">mode_comment</i></a></li>
-            </ul>
+      <div class="container">
+        <div class="card-panel">
+          <div class="card-content">
+            <span class="card-title">${this.title}</span>
+            <p class="flow-text">${this.content}</p>
+            <div class="get-thought-id" id="thoughtID-${this.id}"> </div>
+            <div class="fixed-action-btn horizontal" style="position:relative; float:right; bottom:35px; right:10px">
+              <a class="btn-floating btn-large ${thisColor}">
+                <i class="large material-icons">more_horiz</i>
+              </a>
+              <ul>
+                <li><a class="btn-floating red js-like-button" id="${this.id}"><i class="material-icons">thumb_up</i></a></li>
+                <li><a class="btn-floating yellow darken-1 js-delete-thought-button" id="${this.id}"><i class="material-icons">delete</i></a></li>
+                <li><a class="btn-floating green js-edit-thought-button" id="${this.id}"><i class="material-icons">mode_edit</i></a></li>
+                <li><a class="btn-floating blue js-comment-button"><i class="material-icons">mode_comment</i></a></li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="create-comments-here">
-        <br>
-        <p> add comment </p>
-        <form class="comment-form">
-          <label for="comment[username]">Username:</label>
-          <input type="text-field" name="comment[username]" id="comment-user"></input>
+        <div class="create-comments-here">
           <br>
-          <label for="comment[content]">Content:</label>
-          <input type="text" name="comment[content]" id="comment-content"></input>
-          <br>
-          <input type="submit" value="add comment" </input>
-        </form>
-      </div>
-      <div class="comments-here"></div>
+          <p> add comment </p>
+          <form class="comment-form">
+            <label for="comment[username]">Username:</label>
+            <input type="text-field" name="comment[username]" id="comment-user"></input>
+            <br>
+            <label for="comment[content]">Content:</label>
+            <input type="text" name="comment[content]" id="comment-content"></input>
+            <br>
+            <input type="submit" value="add comment" </input>
+          </form>
+        </div>
+        <div class="comments-here"></div>
+        </div>
       </div>
       `
     }
