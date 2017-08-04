@@ -82,8 +82,8 @@ function createThoughtsController(){
 
     static renderNewThought(thoughtData){
       let newThought = Thought.createFromApi(thoughtData)
-
       render(newThought.thoughtsHTML(), ".thought-here")
+      CommentsController.addListenerToCommentForm()
       ThoughtsController.addListenerToLike()
     }
 
