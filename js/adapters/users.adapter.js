@@ -6,6 +6,7 @@ class UsersAdapter {
         UsersAdapter.saveToStore(user)
       })
     })
+    console.log(store)
   }
 
   static seed(){
