@@ -1,12 +1,12 @@
 function createThoughts() {
 
   return class {
-    constructor (title, content, user_id, id) {
+    constructor (title, content, user_id, id, likes, views) {
       this.title = title
       this.content = content
       this.user_id = user_id
-      this.likes = 0
-      this.views = 0
+      this.likes = likes
+      this.views = views
       this.id = id
       store.thoughts.push(this)
     };
@@ -51,8 +51,7 @@ function createThoughts() {
                 <div class="input-field"><input type="text" name="thought[content]" id="content">
                   <label for="thought[content]">Content</label>
                 </div>
-                <div class="input-field"><input type="text" name="thought[username]" id="username">
-                  <label for="thought[username]">Username</label>
+                <div class="input-field"><input type="text" value="Anonymous" name="thought[username]" id="username">
                 </div>
                 <div class="input-field">
                   <select multiple class="js-select-categories" id="category-selector">
@@ -99,15 +98,21 @@ function createThoughts() {
             <div class="">${uniq}</div>
           </div>
         </div>
+        <div class="container"
+          <div class="views-likes">
+              <p>Views: ${this.views}</p>
+              <p>Likes: ${this.likes}</p>
+          </div>
+        </div>
         <div class="create-comments-here">
           <br>
           <p> add comment </p>
           <form class="comment-form">
-            <label for="comment[username]">Username:</label>
-            <input type="text-field" name="comment[username]" id="comment-user"></input>
-            <br>
             <label for="comment[content]">Content:</label>
             <input type="text" name="comment[content]" id="comment-content"></input>
+            <br>
+            <label for="comment[username]">Username:</label>
+            <input type="text-field" name="comment[username]" value="Anonymous" id="comment-user"></input>
             <br>
             <input type="submit" value="add comment" </input>
           </form>
@@ -126,10 +131,11 @@ function createThoughts() {
 
     static createFromApi(thoughtData){
       if(thoughtData.id == null) {
-        throw new Error('Unable to create thought')
+        console.log(thoughtData)
+        console.warn('Unable to create thought')
       }
-      return new Thought(thoughtData.title, thoughtData.content, thoughtData.user_id, thoughtData.id)
-    };
+      return new Thought(thoughtData.title, thoughtData.content, thoughtData.user_id, thoughtData.id, thoughtData.likes, thoughtData.views)
+    }
 
     removeFromStore() {
       let idx = store.thoughts.indexOf(this)

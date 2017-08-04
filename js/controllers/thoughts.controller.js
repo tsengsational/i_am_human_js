@@ -33,27 +33,37 @@ function createThoughtsController(){
         let thought = Thought.find(id)
         clearPage()
         ThoughtsController.renderThought(thought)
+
       })
     }
 
     static addListenerToLike(){
       $('.js-like-button').on('click', () => {
-        let thought = Thought.find(parseInt(event.target.id))
+        let thought = Thought.find(parseInt($('.js-like-button')[0].id))
         thought.addLikes()
       })
       console.log('listening to like')
+    }
+
+    static addListenerToDelete(){
+      $('.js-delete-thought-button').on('click', ()=> {
+        let id = parseInt($('.js-delete-thought-button')[0].id)
+        ThoughtsAdapter.destroy(id)
+        alert("Thought Destroyed")
+        CategoriesController.renderCategories()
+      })
     }
 
     static addListenerToEdit(){
 
     }
 
-    static addListenderToThoughtView(){
-      $('body').on('click', 'js-thought-view', function(event){
-        let thought = Thought.find(parseInt(event.target.id))
-        thought.addView()
-      })
-    }
+    // static addListenderToThoughtView(){
+    //   $('body').on('click', 'js-thought-view', function(event){
+    //     let thought = Thought.find(parseInt(event.target.id))
+    //     thought.addView()
+    //   })
+    // }
 
     static createFromForm(){
       let selectCategories = [...$('#category-selector option:selected')]
@@ -76,7 +86,9 @@ function createThoughtsController(){
       }
       $('.form-here').empty()
       ThoughtsAdapter.create(title, content, user_id, selectCategories)
+      .then(this.renderNewThought)
     }
+
 
     static usersThoughtsHTML(allUsersThoughts){
           let html = ""
