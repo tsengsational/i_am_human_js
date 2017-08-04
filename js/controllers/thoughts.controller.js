@@ -4,9 +4,11 @@ function createThoughtsController(){
   static renderThought(thought){
     render(thought.thoughtsHTML(), ".thought-here").hide().fadeIn()
     ThoughtsController.addListenerToLike()
+    thought.addView()
     CategoriesController.addListenertoCategoryChip()
     CommentsController.renderComments(thought)
     CommentsController.addListenerToCommentForm()
+    ThoughtsController.addListenerToDelete()
 };
 
 // LISTENERS
@@ -33,7 +35,6 @@ function createThoughtsController(){
         let thought = Thought.find(id)
         clearPage()
         ThoughtsController.renderThought(thought)
-
       })
     }
 
