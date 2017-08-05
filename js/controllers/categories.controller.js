@@ -28,12 +28,15 @@ class CategoriesController {
     static renderSingleCategory(category){
       clearPage()
       render(category.singleCategoryTemplate(), '.categories-here').hide().fadeIn()
+      if($('.js-category-crumb').length === 0){
+        ApplicationController.renderCategoryBreadcrumb(category)
+      }
       let tags = store.tags.filter(tag => {return tag.category_id === category.id})
       let thoughtsLinks = tags.map(tag => {
         let thoughtID = parseInt(tag.thought_id)
         let thought = Thought.find(thoughtID)
         return thought.linkHTML()
-      }).join('<br>')
+      }).join('')
       // render onto this category thoughts space
       render(thoughtsLinks, ".thoughts-here").hide().fadeIn()
       ThoughtsController.addListenertoThoughtLink()

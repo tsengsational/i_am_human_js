@@ -28,3 +28,11 @@ function render(html, where) {
 function clearPage(){
   $('.js-clear').empty()
 }
+
+function breadcrumbHTML(step){
+  return `
+  <li>
+    <a href="#" class="js-crumb" id="crumb-${step}">${step}</a> /
+  </li>
+  `
+}

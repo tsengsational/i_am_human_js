@@ -66,6 +66,7 @@ function renderCategoriesAndAddListeners() {
   CategoriesController.addListenerForCategory('#render-categories', 'click')
   ThoughtsController.addListenerToRenderForm()
   CategoriesController.addListenertoRenderCategory()
+  ApplicationController.addListenersforBreadcrumbs()
 }
 
 console.log('indexing...')

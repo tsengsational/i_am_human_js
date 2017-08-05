@@ -82,7 +82,7 @@ function createCategories () {
           </div>
           <div class="col s12 m8 l8">
             <h1>Thoughts</h1>
-            <div class="thoughts-here flow-text"></div>
+            <div class="thoughts-here"></div>
           </div>
       </div>
       `

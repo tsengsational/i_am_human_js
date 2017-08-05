@@ -4,6 +4,9 @@ function createThoughtsController(){
   static renderThought(thought){
     thought.addView()
     render(thought.thoughtHTML(), ".thought-here").hide().fadeIn()
+    if($('.js-thought-crumb').length === 0){
+      ApplicationController.renderThoughtBreadcrumb(thought)
+    }
     ThoughtsController.addListenerToLike()
     CategoriesController.addListenertoCategoryChip()
     CommentsController.renderComments(thought)

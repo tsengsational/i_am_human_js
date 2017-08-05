@@ -68,7 +68,16 @@ function createThoughts() {
     };
 
     linkHTML(){
-      return `<a href="#" class="js-thought-view" id="thought-${this.id}">${this.title}</a>`
+      let thisColor = colors[Math.floor(Math.random() * colors.length)];
+      return `<div class="col s12 m6"><a href="#" class="card-panel waves-effect waves-light ${thisColor} white-text darken-1 js-thought-view" id="thought-${this.id}" style="border-radius: 50%; height: 15em; width: 15em; padding: .5em;"><div class="center-align card-content js-thought-view" id="thoughtlink-${this.id}" style="
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 50%;
+        height: 30%;
+        margin: auto;" id="thought-${this.id}">${this.title.toUpperCase()}</div></a></div>`
     };
 
     thoughtHTML(){
