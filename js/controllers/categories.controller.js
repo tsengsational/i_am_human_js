@@ -30,6 +30,8 @@ class CategoriesController {
       render(category.singleCategoryTemplate(), '.categories-here').hide().fadeIn()
       if($('.js-category-crumb').length === 0){
         ApplicationController.renderCategoryBreadcrumb(category)
+      } else {
+        $('.js-category-crumb').nextAll().remove()
       }
       let tags = store.tags.filter(tag => {return tag.category_id === category.id})
       let thoughtsLinks = tags.map(tag => {
