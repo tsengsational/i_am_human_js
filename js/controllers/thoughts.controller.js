@@ -15,6 +15,12 @@ function createThoughtsController(){
     CommentsController.renderComments(thought)
     CommentsController.addListenerToCommentForm()
 };
+  static renderThoughtForm(){
+    clearPage()
+    render(Thought.formTemplate(), ".form-here").hide().slideDown('medium')
+    this.addListenerToSubmit()
+    $('select').material_select();
+  }
 
   static locallyUpdateLikes(thought) {
     // Increment the likes view but don't wait for the API request to come back
@@ -29,12 +35,15 @@ function createThoughtsController(){
       })
     }
 
+    static addListenertoRenderFormforCategory(){
+      $('.js-add-thought-btn').on('click', (event)=>{
+        let id = $(event.target).parents('.js-add-thought-btn').prev('a')[0].id.split('-')[1]
+        this.renderThoughtForm()
+      })
+    }
     static addListenerToRenderForm(){
       $('body').on('click', '#render-thought-form', () => {
-        clearPage()
-        render(Thought.formTemplate(), ".form-here" ).hide().slideDown('medium')
-        $('select').material_select()
-        this.addListenerToSubmit()
+        this.renderThoughtForm()
       })
     }
 

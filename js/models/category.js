@@ -96,6 +96,11 @@ function createCategories () {
             <div class="" style="text-align: center;">${this.numThoughts()} ${this.pluralize()}</div>
             </div>
             </a>
+            <div class="fixed-action-btn js-add-thought-btn" style="position:relative; float:right; bottom:100px; right:10px">
+              <a class="btn-floating btn-large ${thisColor} darken-1">
+                <i class="large material-icons">add</i>
+              </a>
+            </div>
           </div>
           <div class="col s12 m8 l8">
             <h1>Thoughts</h1>

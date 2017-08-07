@@ -46,6 +46,7 @@ class CategoriesController {
       // render onto this category thoughts space
       render(thoughtsLinks, ".thoughts-here").hide().fadeIn()
       ThoughtsController.addListenertoThoughtLink()
+      ThoughtsController.addListenertoRenderFormforCategory()
     }
 
 // LISTENERS
