@@ -28,33 +28,40 @@ function createComments () {
     }
 
     static formTemplate() {
-      return `<div class="create-comments-here">
+      return `
+      <div class="create-comments-here" style="display: none;">
         <div class="card-panel" style="bottom-margin: 50px;">
 
-            <br>
-            <span class="card-title">Add Comment</span>
-            <form class="comment-form">
+          <br>
+          <span class="card-title">Add Comment</span>
+          <form class="comment-form">
             <div class="input-field">
               <label for="comment[content]">Content:</label>
               <input type="text" name="comment[content]" id="comment-content"></input>
             </div>
-              <br>
+            <br>
             <div class="input-field">
               <label class="active" for="comment[username]">Username:</label>
               <input type="text" name="comment[username]" value="Anonymous" id="comment-user"></input>
             </div>
-              <br>
-              <input type="submit" value="add comment" </input>
-            </form>
-          </div>
-          <br>
-          <h3>Comments:</h3>
-          <div class="comments-here"></div>
-          <br>
+            <br>
+            <input type="submit" value="add comment" </input>
+          </form>
         </div>
+        <br>
+
       </div>
-  </div>
+  <div class="comments-here">
   `
+    }
+
+    static commentsListHeader() {
+      return `
+      <h3>Comments:</h3>
+      </div>
+      </div>
+      </div>
+      <br>`
     }
 
     static createFromApi(commentData) {

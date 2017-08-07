@@ -2,7 +2,7 @@ function createCommentsController(){
   return class {
 
     static renderComments(thought){
-    let html = thought.comments().map(comment => {
+    let html = Comment.commentsListHeader() + thought.comments().map(comment => {
       return comment.commentHTML()
     }).join('')
     render(html, '.comments-here')
@@ -18,6 +18,7 @@ function createCommentsController(){
         // clear comment form
         $('#comment-user').val("Anonymous")
         $('#comment-content').val("")
+        CommentsController.hideForm()
         // add comment to database
         CommentsAdapter.create(content, thought_id, user_id)
 
@@ -32,6 +33,16 @@ function createCommentsController(){
         // debugger
       })
     }
+
+    static showForm() {
+      console.log('showing form')
+      $('.create-comments-here').show()
+    }
+
+    static hideForm() {
+      $('.create-comments-here').hide()
+    }
+
 
   }
 

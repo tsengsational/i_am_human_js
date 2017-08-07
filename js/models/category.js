@@ -31,6 +31,23 @@ function createCategories () {
       return new Category(categoryData.name, categoryData.image_url, categoryData.id)
     }
 
+    thoughts() {
+
+      let result = []
+      let tags = store.tags.filter(tag => {return tag.category_id === this.id})
+      let thoughtsLinks = tags.forEach(function(tag) {
+        let thoughtID = parseInt(tag.thought_id)
+        let thought = Thought.find(thoughtID)
+        if(typeof thought != 'undefined') {
+          result.push(thought)
+          }
+        })
+
+      return result
+    }
+
+
+
     template(){
       let thisColor = colors[Math.floor(Math.random() * colors.length)];
       return`<div class="col s12 l4">
@@ -110,9 +127,7 @@ function createCategories () {
 
 
     numThoughts(){
-      return store.tags.filter((tag)=>{
-        return tag.category_id === this.id
-      }).length
+      return this.thoughts().length
     };
 
   } //end of class
