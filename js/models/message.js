@@ -9,7 +9,7 @@ function createMessages() {
     };
 
     static find(id){
-      return store.messages.filter(msg => {
+      return store.messages.find(msg => {
         return msg.id === id
       });
     };

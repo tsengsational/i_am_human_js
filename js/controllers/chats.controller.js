@@ -1,8 +1,18 @@
 class ChatsContoller{
 
   static placeChat(){
-    $('.chat-form-here').empty().append(Chat.ChatForm)
-    this.addFormListener()
+    $('#render-chat-form').on('click', () => {
+      $('.chat-form-here').empty().append(Chat.ChatForm)
+      this.addFormListener()
+    })
+  }
+
+  static renderChatLinks(){
+    $('#render-chats').on('click', () => {
+      clearPage()
+      $('.chat-here').append(Chat.allChatLiks())
+      this.renderChatFromLink()
+    })
   }
 
   static addFormListener(){
@@ -12,15 +22,39 @@ class ChatsContoller{
     })
   };
 
-  static renderChat(chat){
-    clearPage()
+  static renderChatFromLink(){
+    $('.js-chat-view').on('click', () => {
+      // debugger
+      let chat_id = parseInt(event.target.id.split("-")[1])
+      let chat = Chat.find(chat_id)
+      ChatsContoller.renderChat(chat)
+    })
+  }
 
+  static renderChat(chat){
+    // debugger
+    clearPage()
     $('.chat-here').append(chat.chatHTML())
     $('.messages-form-here').append(Message.messageForm())
     MessagesController.addFormListener()
-      //get all messages for chat, make html of them and render to ".chat-messages-here"
-    // console.log(chat)
+    // debugger
+    MainChat = chat
+    ChatsContoller.setInter()
+
   }
+
+  static setInter(){
+    // debugger
+    let update = setInterval(MessagesController.realTimeMessageUpdate, 250);
+  }
+
+  // static realTimeChatRender(chat){
+  //   debugger
+  //   let update = setInterval(function () {
+  //   }, 1000);
+  //
+  //   update(MessagesController.updateMessages(chat))
+  // }
 
   static createFromForm(){
     let chat_name = $('#chat-name').val()
@@ -31,3 +65,7 @@ class ChatsContoller{
 
 
 }
+
+ChatsContoller.placeChat()
+ChatsContoller.renderChatFromLink()
+ChatsContoller.renderChatLinks()

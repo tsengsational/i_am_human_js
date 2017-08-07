@@ -24,6 +24,7 @@ class MessagesAdapter{
       .then(response => {return response.json()})
       .then(response => {
         let newMessage = Message.createFromApi(response)
+        console.log(response)
         return chat
       })
       // return newMessage
@@ -41,7 +42,8 @@ class MessagesAdapter{
   };
 
   static saveToStore(messageData){
-    let possibleMSG = Message.find(messageData.id).id
+    // debugger
+    let possibleMSG = Message.find(messageData.id)
     if(typeof possibleMSG === 'undefined'){
       return Message.createFromApi(messageData)
     }

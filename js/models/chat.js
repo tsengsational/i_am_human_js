@@ -7,7 +7,7 @@ function createChat(){
     }
 
     static find(id){
-      return store.chats.filter((chat) => {
+      return store.chats.find((chat) => {
         return chat.id === id
       })
     }
@@ -18,6 +18,20 @@ function createChat(){
         return chat.name === name
       })
     }
+
+    chatLinkHTML(){
+      return `
+      <a href="#" class="js-chat-view" id="chat-${this.id}">${this.name}</a>`
+    }
+
+
+    static allChatLiks(){
+      ChatsAdapter.index()
+      return store.chats.map(chat => {
+        return chat.chatLinkHTML()
+      }).join("")
+    }
+
 
     static ChatForm(){
       return `

@@ -21,6 +21,7 @@ class ChatsAdapter{
     .then(response => {return response.json()})
     .then(response => {
       let newChat = Chat.createFromApi(response)
+      console.log(response)
       return newChat
     })
   }
@@ -38,7 +39,7 @@ class ChatsAdapter{
   };
 
   static saveToStore(chatData){
-    let possibleChat = Chat.find(chatData.id).id
+    let possibleChat = Chat.find(chatData.id)
     if(typeof possibleChat === 'undefined'){
       return Chat.createFromApi(chatData)
     }
