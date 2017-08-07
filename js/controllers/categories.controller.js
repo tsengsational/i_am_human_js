@@ -33,12 +33,16 @@ class CategoriesController {
       } else {
         $('.js-category-crumb').nextAll().remove()
       }
-      let tags = store.tags.filter(tag => {return tag.category_id === category.id})
-      let thoughtsLinks = tags.map(tag => {
-        let thoughtID = parseInt(tag.thought_id)
-        let thought = Thought.find(thoughtID)
+      let thoughtsLinks = category.thoughts().map(thought => {
         return thought.linkHTML()
       }).join('')
+      // let tags = store.tags.filter(tag => {return tag.category_id === category.id})
+      // let thoughtsLinks = tags.map(tag => {
+      //   let thoughtID = parseInt(tag.thought_id)
+      //   debugger
+      //   let thought = Thought.find(thoughtID)
+      //   return thought.linkHTML()
+      // }).join('')
       // render onto this category thoughts space
       render(thoughtsLinks, ".thoughts-here").hide().fadeIn()
       ThoughtsController.addListenertoThoughtLink()

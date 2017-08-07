@@ -102,10 +102,10 @@ function createThoughts() {
                 <i class="large material-icons">more_horiz</i>
               </a>
               <ul>
-                <li><a class="btn-floating red js-like-button" id="${this.id}"><i class="material-icons">thumb_up</i></a></li>
-                <li><a class="btn-floating yellow darken-1 js-delete-thought-button" id="${this.id}"><i class="material-icons">delete</i></a></li>
+                <li><a class="btn-floating blue js-like-button" id="${this.id}"><i class="material-icons">thumb_up</i></a></li>
+                <li><a class="btn-floating red darken-1 js-delete-thought-button" id="${this.id}"><i class="material-icons">delete</i></a></li>
                 <li><a class="btn-floating green js-edit-thought-button" id="${this.id}"><i class="material-icons">mode_edit</i></a></li>
-                <li><a class="btn-floating blue js-comment-button"><i class="material-icons">mode_comment</i></a></li>
+                <li><a class="btn-floating yellow js-comment-button"><i class="material-icons">mode_comment</i></a></li>
               </ul>
             </div>
             <div class="row">

@@ -7,11 +7,13 @@ function createThoughtsController(){
     if($('.js-thought-crumb').length === 0){
       ApplicationController.renderThoughtBreadcrumb(thought)
     }
+    ThoughtsController.addListenerToComment()
     ThoughtsController.addListenerToLike()
+    ThoughtsController.addListenerToDelete()
+    ThoughtsController.addListenerToEdit()
     CategoriesController.addListenertoCategoryChip()
     CommentsController.renderComments(thought)
     CommentsController.addListenerToCommentForm()
-    ThoughtsController.addListenerToDelete()
 };
 
   static locallyUpdateLikes(thought) {
@@ -62,6 +64,14 @@ function createThoughtsController(){
         alert("Thought Destroyed")
         CategoriesController.renderCategories()
       })
+    }
+
+    static addListenerToComment() {
+      $('.js-comment-button').on('click', () => {
+        console.log('clicked Comment')
+        CommentsController.showForm()
+      })
+      console.log('listening to comment button')
     }
 
     static addListenerToEdit(){
